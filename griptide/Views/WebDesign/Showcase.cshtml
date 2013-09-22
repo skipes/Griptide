@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Showcase";
+    Layout = "~/Views/Shared/Layouts/_GTMasterPage.cshtml";
+}
+<link href="@Url.Content("~/Content/css/WebDesign.css")" rel="Stylesheet" type="text/css" />
+<style>
+    #mainContent {
+        min-height: 0;
+    }
+</style>
+<script type="text/javascript" src="@Url.Content("~/Content/scripts/WebDesign/WebDesignShowcase.js")"></script>
+
+@section MainContentHeader{
+    <div class="webDesignShowcase">
+        <span style="color: #EEE;">(click to open site in new tab)</span>
+        <div class="webDesignShowcase__feature">
+            <iframe src="" class="frameFeature" scrolling="no"></iframe>
+            <div class="webDesignShowcase__feature--overlay"></div>
+        </div>
+        <div class="webDesignShowcase__scrollList">
+            <span style="color: #EEE;">(click for larger view)</span>
+            <div class="webDesignShowcase__scrollList_sample">
+                <iframe src="http://www.wkp.griptide.com" class="frameFeature" width="450px" height="300px" scrolling="no"></iframe>
+                <div class="webDesignShowcase__scrollList_sample--overlay"></div>
+                <span>A website created to share the photography and pictures of Warren Kuipers</span>
+            </div>
+            <div class="webDesignShowcase__scrollList_sample">
+                <iframe src="http://www.gaspump.griptide.com" class="frameFeature" width="450px" height="300px" scrolling="no"></iframe>
+                <div class="webDesignShowcase__scrollList_sample--overlay"></div>
+                <span>A site to mimic the functionality of a gas pump</span>
+            </div>
+        </div>
+        <div class="featureDescription dropShadowSmall">
+            <div class="featureDescription__spanHolder">
+
+            </div>
+        </div>
+    </div>
+}
+
+@section MainContent{
+}
+
+@section MainContentSub{
+}

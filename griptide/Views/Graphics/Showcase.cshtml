@@ -1,0 +1,44 @@
+﻿@model griptide.Models.GraphicsShowcaseViewModel
+@{
+    ViewBag.Title = "Showcase";
+    Layout = "~/Views/Shared/Layouts/_GTMasterPage.cshtml";
+}
+
+<script type="text/javascript" src="~/Scripts/jquery.fancybox.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" href="~/content/css/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+
+<script type="text/javascript" src="@Url.Content("~/Content/scripts/Graphics/GraphicsShowcase.js")"></script>
+<style type="text/css">
+    #mainContent {
+        min-height: 0;
+    }
+</style>
+
+@section MainContentHeader{
+    <span style="color: #999;">(Click image to for larger viewing)</span>
+    <div class="graphicsViewer">
+    </div>
+}
+
+@section MainContent{
+    <div class="graphicsPicScroller">
+        <div class="graphicsPicScroller__counter">
+            <span class="picNumber">Viewing #<span class="picCounter">#</span></span><br />
+            <span>(<span class="picLoRange"></span> - <span class="picHiRange"></span>) of @Model.GraphicsFiles.Count()</span>
+        </div>
+        <div class="graphicsPicScroller_Frame" style="height: auto; padding: 5px;">
+            <div class="lbutton graphicsScrollButton" style="float: left;"></div>
+            <div class="rbutton graphicsScrollButton graphicsScrollButtonRight" style="float: right"></div>
+            <div class="graphicsPicScroller__itemContainer">
+                @foreach(var file in Model.GraphicsFiles){
+                    var fileName = Path.GetFileName(file);
+                    <img class="graphicsPicScroller_Item" src="~/Content/images/Graphics/Showcase/@fileName" />
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@section MainContentSub{
+}

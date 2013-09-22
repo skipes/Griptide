@@ -1,0 +1,128 @@
+﻿<style type="text/css" ></style>
+<style type="text/css">
+    .webFeature {
+        height: 300px;
+        position: relative;
+        text-align: center;
+    }
+    .webFeatureItem { 
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        background-size: cover;
+        background: top no-repeat;
+        overflow: hidden;
+        padding-top: 5px;
+        color: #FFF;
+        border: 1pt solid #DDD;
+        border-top: none;
+        
+    }
+
+    .mainWebFeature {
+        height: 300px;
+    }
+
+    .webDesignroundedTop {
+        -webkit-border-top-left-radius: 12px;
+        -webkit-border-top-right-radius: 12px;
+        -moz-border-radius-topleft: 12px;
+        -moz-border-radius-topright: 12px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        /*-webkit-box-shadow:  1px -4px 15px 0px rgba(75, 75, 75, 5);
+        box-shadow:  1px -4px 15px 0px rgba(75, 75, 75, 5);*/
+    }
+
+    .webDesignBoxShadow3 {
+        -webkit-box-shadow: 2px -4px 10px 0px rgba(75, 75, 75, 3);
+        box-shadow: 2px -4px 10px 0px rgba(75, 75, 75, 3);
+    }
+
+    .webDesignBoxShadow2 {
+        -webkit-box-shadow: 3px -4px 15px 0px rgba(75, 75, 75, 5);
+        box-shadow: 3px -4px 15px 0px rgba(75, 75, 75, 5);
+    }
+
+    .webDesignBoxShadow1 {
+        -webkit-box-shadow: 4px -4px 25px 0px rgba(75, 75, 75, 7);
+        box-shadow: 4px -4px 25px 0px rgba(75, 75, 75, 7);
+    }
+
+</style>
+
+<script type="text/javascript">
+    var queHeight = 100;
+
+    $(document).ready(function () {
+        SizeAndPositionElements();
+        TransitionFeatureElements();
+        setInterval(TransitionFeatureElements, 5000);
+    });
+
+    function SizeAndPositionElements() {
+        //Perform the initial sizing of the feature items
+        var itemIndex = $(".webFeature .webFeatureItem").length;
+        $(".webFeature .webFeatureItem").each(function (index) {
+            if (index > 0) {
+                $(this).height(parseInt(queHeight * ((itemIndex - index) / itemIndex))).css('z-index', parseInt(index * 100));
+            } else {
+                $(this).height('100%').css('z-index', parseInt(index * 100));
+            }
+            var newWidth = parseInt(100 - ((itemIndex - index) * 5));
+            $(this).width(newWidth + "%");
+        });
+    }
+
+    function TransitionFeatureElements() {
+        //Rotate the items from front to back
+        var itemIndex = $(".webFeature .webFeatureItem").length;
+        
+        $(".webFeature .webFeatureItem").each(function (index) {
+            if (index == 0) {
+                //Size item at lowest vertical level
+                $(this).animate({ width: 100, height: 0 }, 600, function () {
+                    $(this).css('z-index', parseInt((itemIndex - index) * 100));
+                    $(this).appendTo('.webFeature');
+                    $(this).width("99%");
+                    $(this).removeClass("webDesignBoxShadow3").addClass("webDesignBoxShadow1");
+                    $(this).animate({ height: (parseInt(queHeight * ((itemIndex - (itemIndex - 1)) / itemIndex))) }, 200);
+                });
+            } else if (index == 1) {
+                // size the middle item
+                var newWidth = parseInt(100 - ((itemIndex - index) * 5));
+                $(this).animate({ width: newWidth + "%", height: '100%' }, 800);
+                $(this).removeClass("webDesignBoxShadow2").addClass("webDesignBoxShadow3");
+                $(this).css('z-index', parseInt(index * 100));
+            } else {
+                // size the topmost item
+                console.log((parseInt(queHeight * ((itemIndex - index) / itemIndex))));
+                $(this).animate({
+                    height: (parseInt(queHeight * ((itemIndex - (index - 1)) / itemIndex))),
+                    width: (parseInt(100 - ((itemIndex - index) * 5)) + "%")
+                }, 800);
+                $(this).removeClass("webDesignBoxShadow1").addClass("webDesignBoxShadow2")
+                $(this).css('z-index', parseInt(index * 100))
+            }
+        });
+    }
+</script>
+
+<div class="mainWebFeature">
+    <div class="webFeature">
+        <div class="webFeatureItem webDesignroundedTop generalTextShadow" style="background-color: #FFF; background-image: url(@Url.Content("~/Content/images/WebDesignFeatureSlides_jquery.png"))">
+            JQuery
+        </div>
+        <div class="webFeatureItem webDesignroundedTop generalTextShadow" style="background-color: #56b252; background-image: url(@Url.Content("~/Content/images/WebDesignFeatureSlides_showcase.png"));">
+            Graphics Showcase
+        </div>
+        <div class="webFeatureItem webDesignroundedTop generalTextShadow" style="background-image: url(@Url.Content("~/Content/images/WebDesignFeatureSlides_latest.png"));">
+            What's New to this Section?
+        </div>
+    </div>
+</div>

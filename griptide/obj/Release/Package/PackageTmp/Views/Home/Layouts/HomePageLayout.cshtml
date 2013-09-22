@@ -1,0 +1,102 @@
+﻿@model griptide.Models.PageEntryViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @{ Html.RenderPartial("~/Views/Shared/Layouts/_Header.cshtml"); }
+    <link href="@Url.Content("~/Content/css/Home.css")" rel="Stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/Content/scripts/HomePicRotator.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/scripts/jquery-ui-1.10.2.custom.min.js")"></script>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+        <div>
+        <div id="topContent" class="ripBorder">
+            <div id="viewer" style="position: relative; width: 100%;">
+                <div style="width: 100%; margin: 0 auto; position: absolute; z-index: 500;">
+                    <div style="width: 100%; height: 130px;">
+                        <div style="width: 1000px; margin: 0 auto; position: relative;">
+                            <img src="@Url.Content("~/Content/images/griptide_logo.png")" style="float: left" />
+                            <img src="@Url.Content("~/Content/images/griptide_title_text.png")" style="float: left" />
+                            <!-- MENU CONTENT HOLDER -->
+                            @{ Html.RenderAction("Menu", "MainMenu"); }
+                        </div>
+                    </div>
+                </div>
+                <div style="padding-top: 2em; margin: 0 auto;">
+                    <div id="imageHolderContainer">
+                            <div class="rotatorContainer">
+		                        <div id="featureImage">
+			                        <div class="image" style="background-image: url(@Url.Content("~/Content/images/bad_kitty.png"))"></div>
+                                    @*<img class="image" src="@Url.Content("~/Content/images/bad_kitty.png")" />*@
+		                        </div>
+		                        <div id="imageQue" class="dropShadow">
+                                    <div class="image" style="background-image: url(@Url.Content("~/Content/images/goblin.png"))"></div>
+                                    <div class="image" style="background-image: url(@Url.Content("~/Content/images/minotaur.png"))"></div>
+			                        <div class="image" style="background-image: url(@Url.Content("~/Content/images/surfer.png"))"></div>
+			                        <div class="image" style="background-image: url(@Url.Content("~/Content/images/sherrif_monkey.png"))"></div>
+		                        </div>
+	                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="position: absolute; bottom: 0; z-index: 50; height: 4em; width: 100%;">
+                <div style="width: 100%; height: 3em; background: url('@Url.Content("~/Content/images/small_rip.png")');">
+                </div>
+                <div style="height: 1em; background-color: white;">
+                </div>
+            </div>
+        </div>
+        <div id="t1" style="width: 100%; height: auto; overflow: hidden; clear: both; position: relative;">
+            <div style="height: 1em; background-color: #DEF; z-index: 1000;">
+            </div>
+            <div id="blueFlameBuffer">
+            </div>
+            <div id="blueFlames">
+            </div>
+            <div id="mainContentContainer">
+                <div id="mainContentHeader" class="grayFade dropShadow">
+                    <!-- ContentBody CONTENT HOLDER -->
+                </div>
+                <div id="mainContent" class="dropShadow">
+                    <!-- Quick Updates CONTENT HOLDER -->
+                    <div class="quickUpdate">
+                        @foreach (var p in Model.QuickUpdateEntries)
+                        {
+                            Html.RenderPartial("~/Views/Shared/PartialViews/QuickUpdateEntry.cshtml", p);
+                        }
+                    </div>
+                    <!-- ContentBody CONTENT HOLDER -->
+                    @foreach (var p in Model.ContentEntries.ToList())
+                    {
+                        Html.RenderPartial("HomePageEntry", p);
+                    }
+                </div>
+                <div id="mainContentSub" class="dropShadow">
+                </div>
+            </div>
+            <div id="blob" style="background-image: url('@Url.Content("~/Content/images/blob.png")'); height: 200px; width: 100%;
+                position: absolute; bottom: 0; z-index: 0;">
+            </div>
+        </div>
+        <footer class="pageFooter">
+             @{ Html.RenderAction("FooterMenu", "MainMenu"); }
+        </footer>
+    </div>
+</body>
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25307303-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+</html>

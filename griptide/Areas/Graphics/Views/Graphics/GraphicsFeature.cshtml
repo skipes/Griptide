@@ -1,0 +1,98 @@
+﻿<style type="text/css">
+    .thumbNailTray--Images {
+        background-color: #999;
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 1em;
+        height: 80px;
+        width: 250px;
+        float: left;
+        border: 1pt solid #AAA;
+        border-left: 1pt solid #777;
+        border-top: 3pt solid #fbd459;
+        cursor: pointer;
+    }
+
+    .graphicsFeature {
+        width: 100%;
+        height: 300px;
+    }
+
+
+    .thumbNailTray {
+        position: relative;
+        width: 1000px; 
+        height: auto;
+        overflow: hidden;
+    }
+    .graphicsContainer {
+        overflow: hidden;
+        display: inline-block; 
+        background-color: #333;
+    }
+
+    .arrow-down {
+        margin-left: auto;
+        margin-right: auto;
+        border-top: 20px solid #f8af4b;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        SlideThumbNails();
+        setInterval(SlideThumbNails, 5000);
+    });
+
+    function SlideThumbNails() {
+        $("#graphicsFeature").fadeOut("3000", "linear");
+        $("#trayImageHolder div:first").hide("slide", function(){
+            $("#trayImageHolder div:first").appendTo("#trayImageHolder").width("250px").show();
+            
+            console.log('url(' + $("#trayImageHolder div:first").css('background-image') + ')');
+            $("#graphicsFeature").css('background-image', $("#trayImageHolder .thumbNailTray--Images:nth-child(3)")
+                .css('background-image')).fadeIn('slow');
+        });
+    }
+</script>
+
+<div style="height: 400px; width: 100%;" class="dropShadow">
+    <div class="graphicsContainer">
+        <div class="graphicsFeature">
+            <div id="graphicsFeature" style="height: 100%; width: 100%;
+                background-repeat: no-repeat;">
+
+            </div>
+        </div>
+        <div style="position: relative">
+            <div style="position: absolute; width: 100%; margin-left: auto; margin-right: auto; z-index: 100; border-top: 3pt solid #f8af4b">
+                <div class="pointer arrow-down">
+
+                </div>
+            </div>
+        <div class="thumbNailTray">
+
+            <div style="width: 20000px; position: relative; left: -210px" id="trayImageHolder">
+                <div class="thumbNailTray--Images" style="background-image: url(@Url.Content("~/Content/images/goblin.png"));">
+                    <span>BOX1</span>
+                </div>
+                <div class="thumbNailTray--Images" style="background-image: url(@Url.Content("~/Content/images/minotaur.png"))">
+                    <span>BOX2</span>
+                </div>
+                <div class="thumbNailTray--Images" style="background-image: url(@Url.Content("~/Content/images/surfer.png"))">
+                    <span>BOX3</span>
+                </div>
+                <div class="thumbNailTray--Images" style="background-image: url(@Url.Content("~/Content/images/sherrif_monkey.png"))">
+                    <span>BOX4</span>
+                </div>
+                <div class="thumbNailTray--Images" style="background-image: url(@Url.Content("~/Content/images/goblin.png"));">
+                    <span>BOX5</span>
+                </div>
+                <div class="thumbNailTray--Images" style="background-image: url(@Url.Content("~/Content/images/surfer.png"))">
+                    <span>BOX6</span>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

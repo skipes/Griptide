@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="griptideModelStoreContainer" CdmEntityContainer="DBContext">
+    <EntitySetMapping Name="ContentEntries">
+      <EntityTypeMapping TypeName="griptideModel.ContentEntry">
+        <MappingFragment StoreEntitySet="contententry">
+          <ScalarProperty Name="entryID" ColumnName="entryID" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="entryTitle" ColumnName="entryTitle" />
+          <ScalarProperty Name="entryText" ColumnName="entryText" />
+          <ScalarProperty Name="activeDate" ColumnName="activeDate" />
+          <ScalarProperty Name="activeFlag" ColumnName="activeFlag" />
+          <ScalarProperty Name="entryTypeId" ColumnName="entryTypeId" />
+          <ScalarProperty Name="entrycol" ColumnName="entrycol" />
+          <ScalarProperty Name="imagePath" ColumnName="imagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="entrytypecodes">
+      <EntityTypeMapping TypeName="griptideModel.entrytypecode">
+        <MappingFragment StoreEntitySet="entrytypecode">
+          <ScalarProperty Name="entryTypeId" ColumnName="entryTypeId" />
+          <ScalarProperty Name="entryType" ColumnName="entryType" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

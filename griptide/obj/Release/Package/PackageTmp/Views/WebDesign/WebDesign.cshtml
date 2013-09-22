@@ -1,0 +1,53 @@
+﻿@{
+    @model griptide.Models.PageEntryViewModel
+    ViewBag.Title = "Web Design";
+    //Layout = "~/Views/WebDesign/Layouts/WebDesignPageDefaultLayout.cshtml";
+    Layout = "~/Views/Shared/Layouts/_GTMasterPage.cshtml";
+}
+@if(ViewBag.HideFeature == false){
+    @section Topper{
+        @RenderPage("~/Views/WebDesign/WebDesignFeature.cshtml")
+    }
+}
+@section MainContentHeader{
+    @if (Model.PostEntry != null)
+    {
+        foreach (var p in Model.PostEntry)
+        {
+            @Html.Raw(p.PostHeader);
+        }
+    }
+}
+
+@section MainContent{
+    @if(Model.ContentEntries != null){
+        if(Model.QuickUpdateEntries.Count() > 0){
+            <div class="quickUpdate">
+                @foreach (var p in Model.QuickUpdateEntries)
+                {
+                    Html.RenderPartial("~/Views/Shared/PartialViews/QuickUpdateEntry.cshtml", p);
+                }
+            </div>
+        }
+        
+        foreach (var p in Model.ContentEntries.ToList())
+        {
+            Html.RenderPartial(@Url.Content("~/Views/Shared/PartialViews/PageEntry.cshtml"), p);
+        }
+    } else {
+        if (Model.PostEntry != null)
+        {
+            foreach (var p in Model.PostEntry)
+            {
+                Html.RenderPartial(@Url.Content("~/Views/Shared/PartialViews/PostEntry.cshtml"), p);
+            }
+        }
+    }
+}
+
+@section MainContentSub{
+    @if (Model.PostEntry != null)
+    {
+        Html.RenderPartial(@Url.Content("~/Views/Shared/PartialViews/MainContentSub.cshtml"), Model.PostEntry.First());
+    }
+}

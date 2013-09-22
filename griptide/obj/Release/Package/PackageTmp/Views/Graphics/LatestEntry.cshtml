@@ -1,0 +1,25 @@
+﻿@{
+    @model griptide.Models.PageEntryViewModel
+    ViewBag.Title = "LatestEntry";
+    Layout = "~/Views/Shared/Layouts/_GTMasterPage.cshtml";
+}
+
+@section MainContent{
+    @if(Model.ContentEntries != null){
+        foreach (var p in Model.ContentEntries.ToList())
+        {
+            Html.RenderPartial(@Url.Content("~/Views/Shared/PartialViews/PageEntry.cshtml"), p);
+        }
+    } else {
+        if (Model.PostEntry != null)
+        {
+            foreach (var p in Model.PostEntry)
+            {
+                Html.RenderPartial(@Url.Content("~/Views/Shared/PartialViews/PostEntry.cshtml"), p);
+            }
+        }
+    }
+}
+
+@section MainContentSub{
+}

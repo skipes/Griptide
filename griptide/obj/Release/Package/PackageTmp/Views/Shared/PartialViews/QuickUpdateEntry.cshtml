@@ -1,0 +1,30 @@
+﻿@model griptide.Domain.Entities.ContentEntry
+
+<div class="updateInstance">
+    @if( Model.PostID != null || (Model.Action != null && Model.Controller != null) ){
+        if (Model.EntryUrl == null)
+        {
+            string urlContent = "";
+            if (Model.PostID != null)
+            {
+                urlContent = string.Format("~/{0}/{1}?postID={2}", Model.Controller, Model.Action, @Model.PostID);
+            }
+            else if (Model.PostID == null && Model.Action != null && Model.Controller != null)
+            {
+                urlContent = string.Format("~/{0}/{1}", Model.Controller, Model.Action);
+            }
+            <a href="@Url.Content(urlContent)">
+                <span class="quickUpdateTitle">@Model.EntryTitle</span><br />
+            </a>
+        } else {
+            string url = "http://" + Model.EntryUrl;
+            <a href="@Html.Raw(url)">
+                <span class="quickUpdateTitle">@Model.EntryTitle</span><br />
+            </a>
+        }
+    } else {
+        <span class="quickUpdateTitle">@Model.EntryTitle</span><br />
+    }
+    <span class="quickUpdateDate">@Model.DateCreated</span><br />
+    <span class="quickUpdateText">@Model.EntryText</span>
+</div>

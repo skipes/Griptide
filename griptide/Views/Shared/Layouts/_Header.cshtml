@@ -1,0 +1,14 @@
+﻿<meta name="viewport" content="width=device-width" />
+<title>@ViewBag.Title</title>
+<link href="@Url.Content("~/Content/css/gtSite.css")" rel="Stylesheet" type="text/css" />
+@{string currController = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();
+    if(currController == "graphics"){
+        <link href="@Url.Content("~/Content/css/Graphics.css")" rel="Stylesheet" type="text/css" />
+    } else if (currController == "webdesign"){
+        <link href="@Url.Content("~/Content/css/WebDesign.css")" rel="Stylesheet" type="text/css" />
+    } else if (currController == "home"){
+        <link href="@Url.Content("~/Content/css/Home.css")" rel="Stylesheet" type="text/css" />
+    }
+}
+<script type="text/javascript" src="@Url.Content("~/Content/scripts/jquery-1.9.1.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Content/scripts/gtShared.js")"></script>

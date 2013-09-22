@@ -1,0 +1,114 @@
+﻿.image
+{
+	width: 20%;
+	height: 70%;	
+	float: left;
+	margin: 2%;
+    font-size: 20pt;
+    background-size: cover;
+    background-repeat:no-repeat;
+    overflow: hidden;
+    background-color: #EEE;
+
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
+
+}
+
+.image--hidden {
+    background: transparent none !important;
+    background-repeat:no-repeat;
+    border: none;
+    -webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+#featureImage .image {
+    width: 100%; 
+    height: 100%;
+    margin: 0;
+    background-color: transparent;
+}
+
+#featureImage {
+    width: 100%; 
+    height: 60%; 
+    overflow: hidden;
+}
+
+#imageQue {
+    width: auto;
+    height: 28%;
+    background-position: top;
+    background: rgb(127,127,127); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(127,127,127,1) 26%, rgba(102,102,102,1) 75%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(26%,rgba(127,127,127,1)), color-stop(75%,rgba(102,102,102,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(127,127,127,1) 26%,rgba(102,102,102,1) 75%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(127,127,127,1) 26%,rgba(102,102,102,1) 75%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(127,127,127,1) 26%,rgba(102,102,102,1) 75%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(127,127,127,1) 26%,rgba(102,102,102,1) 75%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7f7f7f', endColorstr='#666666',GradientType=0 ); /* IE6-9 */
+
+
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+}
+
+#imageQue .image{
+    -moz-box-shadow:    inset 0 0 15px #000000;
+    -webkit-box-shadow: inset 0 0 1px #000000;
+    box-shadow:         inset 0 0 10px #000000;
+
+    border-left: 2pt solid #555;
+    border-top: 2pt solid #555;
+    border-right: 2pt solid #AAA;
+    border-bottom: 2pt solid #AAA;
+    cursor: pointer;
+}
+
+#imageHolderContainer {
+    /*position: relative; 
+	    width: 60em;*/
+    height: 38em;
+    z-index: 20;
+    margin: 0 auto;
+    background: transparent url('../images/white_viewer_back.png') center no-repeat;
+    /*background-position:10em 3em;*/
+}
+
+
+
+imageHolderContainer img {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.rotatorContainer {
+    width: 60em; 
+    height: 38em; 
+    padding: 1%; 
+    display: inline-block; 
+    position: relative; 
+    text-align: center;
+}
+
+.menuContainer
+{
+    color: #999;
+    text-shadow: 1px 1px 1px #ebebeb;
+    filter: dropshadow(color=#ebebeb, offx=1, offy=1);
+}
+
+
+#topContent {
+    width: 100%;
+    height: 38em;
+    overflow: hidden;
+    background: white url('../images/yellow_header_large.png');
+    overflow: hidden;
+    position: relative;
+}

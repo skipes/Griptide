@@ -1,0 +1,124 @@
+﻿a.menu span
+{
+	color: #DDD;
+}
+
+.arrow-down {
+	width: 0; 
+	height: 0; 
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	
+	border-top: 20px solid #FFF;
+}
+
+.graphicsViewer {
+    height: 28em;
+    width: 100%;
+    background-color: #DDD;
+    position: relative;
+    overflow: hidden;
+}
+
+.graphicsView__Item {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    max-width:100%; 
+    max-height:100%;
+}
+
+.graphicsPicScroller {
+    height: auto;
+    width: 100%;
+    background-color: #999;
+    position: relative;
+}
+
+.graphicsPicScroller__counter {
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #CCC;
+    text-shadow: 1px 1px 1px #F3F3F3;
+    filter: dropshadow(color=#F3F3F3, offx=1, offy=1);
+    border-bottom: 1pt solid #EEE;
+}
+
+.graphicsPicScroller_Item {
+    height: 120px;
+    width: auto;
+    max-width: 250px;
+    background-color: white;
+    visibility: hidden;
+    float: left;
+    margin: 5px;
+    margin-top: 0;
+    cursor: pointer;
+    position: relative;
+    margin-left: 0 auto;
+    opacity:0.3;
+    filter:alpha(opacity=30); /* For IE8 and earlier */
+}
+
+    .graphicsPicScroller_Item:hover {
+        opacity:0.8;
+        filter:alpha(opacity=80); /* For IE8 and earlier */
+    }
+
+.imgActiveDisplay {
+    float: left;
+}
+
+.graphicsScrollButton {
+    height: 140px;
+    background: transparent url('../images/picScrollerArrow.png') center no-repeat;
+    width: 40px;
+    cursor: pointer;
+    border: 1pt solid transparent;
+}
+
+.graphicsScrollButton:hover {
+    background: #454545 url('../images/picScrollerArrowHover.png') center no-repeat;
+    cursor: pointer;
+}
+
+.graphicsScrollButtonRight {
+    -webkit-transform:scaleX(-1);
+    -moz-transform:scaleX(-1);
+    -ms-transform:scaleX(-1);
+    -o-transform:scaleX(-1);
+    transform:scaleX(-1);
+}
+
+.graphicsPicScroller__itemContainer{
+    /*width: 840px;*/ 
+    overflow: hidden;
+    height: auto;
+    margin: 10px;
+    position: relative;
+}
+
+.activeImg {
+    opacity:1.0;
+    filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+
+.picNumber {
+    font-weight: bold;
+}
+
+.graphicsPicScroller_Frame{
+    background: rgb(127,127,127); /* Old browsers */
+    overflow: auto; /* size vertically to contain floats*/
+    background: -moz-linear-gradient(top,   rgba(102,102,102,1) 26%, rgba(127,127,127,1) 75%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(75%,rgba(102,102,102,1)),color-stop(26%,rgba(127,127,127,1) )); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(102,102,102,1) 26%, rgba(127,127,127,1) 75%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(102,102,102,1) 26%, rgba(127,127,127,1) 75%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(102,102,102,1) 26%, rgba(127,127,127,1) 75%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(102,102,102,1) 26%, rgba(127,127,127,1) 75%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666666', endColorstr='#7f7f7f',GradientType=0 ); /* IE6-9 */
+}

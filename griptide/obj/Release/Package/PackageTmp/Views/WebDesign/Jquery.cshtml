@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Jquery";
+    @model griptide.Models.PageEntryViewModel
+    Layout = "~/Views/Shared/Layouts/_GTMasterPage.cshtml";
+}
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/Prettify/prettify.js")"></script>
+<link href="@Url.Content("~/Content/Prettify/Themes/desert.css")" rel="Stylesheet" type="text/css" />
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("pre").addClass("prettyprint linenums");
+        prettyPrint();
+    });
+</script>
+
+@section MainContentHeader{
+    @if (Model.PostEntry != null)
+    {
+        foreach (var p in Model.PostEntry)
+        {
+            //Override the left padding to maximize posting space
+            <style>
+                .contentHeaderPadLeft {
+                    padding-left: 0px;
+                }
+            </style>
+            //@Html.Raw(p.PostHeader);
+            string url = string.Format("~/Views/WebDesign/Jquery/{0}.cshtml", p.PostHeader);
+            Html.RenderPartial(@Url.Content(url), p);
+        }
+    }
+}
+
+@section MainContent{
+    @if(Model.ContentEntries != null){
+        foreach (var p in Model.ContentEntries.ToList())
+        {
+            Html.RenderPartial(@Url.Content("~/Views/Shared/PartialViews/PageEntry.cshtml"), p);
+        }
+    } else {
+        if (Model.PostEntry != null)
+        {
+            foreach (var p in Model.PostEntry)
+            {
+                Html.RenderPartial(@Url.Content("~/Views/Shared/PartialViews/PostEntry.cshtml"), p);
+            }
+        }
+    }
+}
+
+@section MainContentSub{
+    @if(Model.PostEntry != null && Model.PostEntry.First().LinksGroup != null){
+        Html.RenderPartial(@Url.Content("~/Views/Shared/PartialViews/MainContentSub.cshtml"), Model.PostEntry.First());
+    }
+}

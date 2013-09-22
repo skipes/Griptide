@@ -1,0 +1,70 @@
+'<p>
+This demo was fun to put together but required a little finesse to capture the smooth animation of the boxes all the way around the container.  Also, having the correct CSS configuration for the float settings was important to make the movements fluid and seamless.  I also enjoy the random colors and seeing the transparency where the boxes overlap each other.
+</p>
+
+<h4>1.  Let''s start with the boxes</h4>
+<pre>
+	<xmp>
+		$(".floater").each(function (index) {
+			var box = this;
+			//assign a random color
+			var rgbVals = GetRandVals();
+			$(this).css(''background-color'', ( "rgba("+ rgbVals[0] + "," 
+				+ rgbVals[1] + "," + rgbVals[2] + ", 5)" ) );
+			setTimeout(function () {
+				Cycle($(box))
+			}, index * 300);
+		});
+		
+		.....
+		function GetRandVals() {
+			// get a random value (0 - 255) for each R,G,and B.
+			var rgb = new Array();
+
+			for (var i = 0; i < 3; i++) {
+				rgb.push(Math.round(Math.random() * (255 - 0) + 0));
+			}
+			return rgb;
+		}
+	</xmp>
+</pre>
+
+<p>First off, we''re going to take an instance of the floater box and grab some random color values using the GetRandVals() function.  We''ll get a random RGB value for each box that will return to the floater and define the background-color attribute.  Then we associate that instance with the animation events that "juggle" it around the parent container, and keep it moving.
+</p>
+
+<h4>2.  Creating the Cycle</h4>
+<pre>
+<xmp>
+	setTimeout(function () {
+            Cycle($(box))
+    }, index * 300);
+	
+	.....
+	
+	var totalDuration = 2000;
+	var quarterDuration = totalDuration / 4;
+	function Cycle(box) {
+		setInterval(function () {
+			var slideRight = $(".jugglerMain").width() - box.width();
+			var slideDown = $(".jugglerMain").height() - box.height();
+			$(box).animate({ left: slideRight }, quarterDuration).animate({ 
+				top: slideDown }, quarterDuration);
+			$(box).animate({ left: ''0'' }, quarterDuration).animate({ top: ''0'' }, 		
+				quarterDuration);
+			if ($(".jugglerMain__loadingText").is(":visible")) {
+				$(".jugglerMain__loadingText").fadeOut();
+			}
+		}, totalDuration);
+	}
+</xmp>
+</pre>
+
+<p>We have our animations defined in the Cycle() function.  There are some variables there that hold the total duration of the cycle and a quarter duration(in miliseconds).  We''re passing in the "floater" box instance that will be receiving the animations. Now we''re taking the ".jugglerMain" parent container so we can correct our cycle path well in the bounds of the container.  Now we''re doing a simple slide along the top border all the way over to the right side.
+</p>
+<p>
+The next act we''re performing is chained to the same animation call to make a seamless move. Also, we''re using the "top" attribute to slide the square down to the bottom agains the right border.  So here''s where it''s easy to get derailed, because we need to think in terms of location by using "top" and "left".  We are no longer "sliding" the floater.  We''re actually reversing the natural "left" and "top" position values.  So now we tell the floater it''s left position will be zero, and we animate the call.  Same with the top, we''re now defining the top position relative to the parent container.  These events are also chained and give a seamless flow.  By the time the animations are finished the setTimeout is ready for the floater to continue on its next cycle.
+</p>
+<h4>3.  Conclusion</h4>
+<p>
+This became a cool blend of CSS and Jquery.  It''s not complex in the tools we''re using for execution, but it was fun to test we have to think a bit backwards to make the full circuit.
+</p>'

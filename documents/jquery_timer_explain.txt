@@ -1,0 +1,86 @@
+﻿<p>&nbspThis isn't a tricky demo, but the trick is executing the timer and allowing the functionality to be stopped, started, and reset. Initially i was inclined to animate the timer using jquery, but tying in the pause/play functionality would require some way to interrupt the jquery animation. Instead I opted to set the timer height manually during the countdown.</p>
+
+<h5>Setting it up</h5>
+<pre>
+<xmp>
+	timer = 10000;
+    timeRemain = timer;
+    timeInterval = 53;
+    decimals = 2;
+
+    $(".timerDisplay").text(parseFloat(Math.floor(timer) / 1000).toFixed(2));
+</xmp>
+</pre>
+<p>
+In order to give our timer some flexibility we've got variables that can be set to distinguish how we expect the timer o work.  The "timer" variable itself is how many miliseconds we start the timer on.  The "timeInterval" is how many miliseconds we define our frequency in for updating the amount of time remaining.  And we're displaying two decimal digits throughout the script, so we'll define it once as a variable.  Lastly, we convert our timer to seconds by dividing by 1000 and setting the decimal value to two places.
+</p>
+
+<h5>Adding Controls</h5>
+<pre>
+<xmp>
+$(".playButton").click(function () {
+        clearTimeout(setTimeDisplay);
+        //timeRemain = timer;
+        SetTimer();
+    });
+
+    $(".pauseButton").click(function () {
+        clearTimeout(setTimeDisplay);
+    });
+
+    $(".resetButton").click(function () {
+        clearTimeout(setTimeDisplay);
+        timeRemain = timer;
+        $(".meterFill").css("background-color", "rgb(0%, 100%, 0%)");
+        $(".timerDisplay").text(parseFloat(Math.floor(timer) / 1000).toFixed(decimals));
+        $(".meterEmpty").height("0%");
+    });
+</xmp>
+</pre>
+<p>
+	Now we're adding our controls to give us the ability to play,stop, and pause the timer.  SetTimeDisplay is going to be our interval that updates the timer.  So when we use the play button it will clear it out and start again.  Pause and stop will also stop the interval from running, but stop will then reset the timer to its original setup.
+</p>
+
+<h5>Getting Into the Guts</h5>
+<pre>
+<xmp>
+function SetTimer() {
+    timeRemain = parseFloat(timeRemain - timeInterval, 10);
+    if (timeRemain > 0) {
+        var newHeight = 100 - ((timeRemain / timer) * 100);
+        $(".meterEmpty").height(newHeight + "%");
+
+        //Gradient based on height.  Go from Green -> yellow -> red.
+        if (newHeight <= 50) {
+            $(".meterFill").css("background-color",
+                                "rgb(" + (newHeight * 2) + "%,100%, 0%)");
+        } else {
+            $(".meterFill").css("background-color",
+                                "rgb(100%," + ((100 - newHeight) * 2) + "%, 0%)");
+        }
+
+        var newVal = parseFloat(Math.floor(timeRemain) / 1000).toFixed(decimals);
+        if (newVal > 0) {
+            $(".timerDisplay").text(parseFloat(newVal));
+        }
+        setTimeDisplay = setTimeout(function () { SetTimer(); }, timeInterval);
+    } else {
+        $(".meterEmpty").height("100%");
+        $(".timerDisplay").text("0.000");
+        clearTimeout(setTimeDisplay);
+    }
+}
+</xmp>
+</pre>
+<p>So now we're ready to look at the inner-workings of the timer.  First we calculate the remaining time by using our decreasing "timeRemain" variable.  When the SetTimer() function is called it's being decreased by the interval value.
+</p>
+<p>
+In the next step I ran into a minor bug where the timeRemain would consistently become a negative number when subtracting the "timeInterval" value.  So now Icheck this value before i display it.  If it's greater than zero i look at how i need to manipulate the timer.  Otherwise, i manually set the timer to zero and stop the interval.
+</p>
+<p>
+In order to get the gradient to show variation I'm taking a percentage of the begining time and the remaining time.  This also give me the height to set my timer bar so that it reflects the burn-down.  For the colors i use the value similarly to calculate the RGB value of the timer background.  So consider that full green is at 100%, pure yellow is at 50%, and pure red is 0%.  So between 50% and 100% i decrease the green value to gradient into the yellow value.  When i fall below 50% time remaining, i want to ramp up the red value in the RGB until we reach 0%.
+</p>
+
+<h5>Conclusion</h5>
+<p>I think you can get some good mileage out of this example for how many different ways you can utilize the functionality and modifying the display.  Plus, seeing how easy it was to control the javascript instead of using jquery animation gives you strong control over the timer functionality.
+</p>

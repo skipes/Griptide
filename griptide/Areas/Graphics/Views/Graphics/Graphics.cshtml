@@ -1,0 +1,36 @@
+﻿@{
+    @model griptide.Models.PageEntryViewModel
+    ViewBag.Title = "Graphics";
+    //Layout = "~/Views/Graphics/Layouts/GraphicsPageDefaultLayout.cshtml";
+    Layout = "~/Views/Shared/Layouts/_GTMasterPage.cshtml";
+}
+@section Topper{
+    @RenderPage("GraphicsFeature.cshtml")
+}
+
+@section MainContentHeader{
+    @if (Model.PostEntries != null)
+    {
+        foreach (var p in Model.PostEntries)
+        {
+            @Html.Raw(p.PostHeader)
+        }
+    }
+}
+
+@section MainContent{
+    @if(Model.ContentEntries != null){
+        foreach (var p in Model.ContentEntries)
+        {
+            Html.RenderPartial(@Url.Content("~/Views/Home/PageEntry.cshtml"), p);
+        }
+    } else {
+        if (Model.PostEntries != null)
+        {
+            foreach (var p in Model.PostEntries)
+            {
+                Html.RenderPartial(@Url.Content("~/Views/Home/PostEntry.cshtml"), p);
+            }
+        }
+    }
+}

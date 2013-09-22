@@ -1,0 +1,40 @@
+﻿@model griptide.Models.MenuList
+
+    <ul class="menuContainer">
+        @foreach(var menuItem in Model.MenuItemList){
+                
+                if(menuItem.MenuSubItems.Any())
+                {
+                    <li class="roundedTop"/>
+                } else {
+                    <li class="rounded"/>
+                }
+                <a href="@Url.Action("Index", @menuItem.MenuText)" class="@menuItem.AdditionalClass">@menuItem.MenuText
+                    @if(menuItem.MenuSubItems.Count() > 0){ 
+                        <text>+</text>
+                    }
+                </a>
+                
+                if(menuItem.MenuSubItems.Any()){
+                    <div class="menuDropdown dropShadowSmall">                        
+                        <ul class="subMenuList ">
+                            @foreach(var subItem in menuItem.MenuSubItems){
+                                if(subItem.EnabledFlag == 1){
+                                    <li>
+                                        @if(subItem.menuController != null ){
+                                            <a href="@Url.Action(subItem.menuAction, @subItem.menuController)">
+                                                @subItem.SubMenuText
+                                            </a>
+                                        } else {
+                                            <a href="@Url.Action("Index", "Home")">
+                                                @subItem.SubMenuText
+                                            </a>                                        
+                                        }
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                }
+        }
+    </ul>

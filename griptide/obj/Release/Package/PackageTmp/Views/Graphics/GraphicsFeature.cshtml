@@ -1,0 +1,98 @@
+﻿<style type="text/css">
+    .thumbNailTray--Images {
+        background-color: #999;
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 1em;
+        height: 80px;
+        width: 351px;
+        float: left;
+        border: 1pt solid #AAA;
+        border-left: 1pt solid #777;
+        border-top: 3pt solid #fbd459;
+    }
+
+    .graphicsFeature {
+        width: 100%;
+        height: 300px;
+    }
+
+
+    .thumbNailTray {
+        position: relative;
+        width: 1000px; 
+        height: auto;
+        overflow: hidden;
+    }
+    .graphicsContainer {
+        overflow: hidden;
+        display: inline-block; 
+        background-color: #333;
+    }
+
+    .arrow-down {
+        margin-left: auto;
+        margin-right: auto;
+        border-top: 20px solid #f8af4b;
+    }
+</style>
+
+<script type="text/javascript">
+    var origWidth = 0;
+
+    $(document).ready(function () {
+        // Get the width of a valid feature image.  This is used when it's appended back to the que.
+        origWidth = $("#trayImageHolder div:nth-child(3)").width();
+        SlideThumbNails();
+        setInterval(SlideThumbNails, 5000);
+    });
+
+    function SlideThumbNails() {
+        $("#graphicsFeature").fadeOut("300", "linear");
+        //tension effect and move to next image in line
+        $("#trayImageHolder").animate({ "left": "+=20" }, 150).animate({ "left": "-=20" }, 150, function () {;
+            $("#trayImageHolder div:first").animate({ "width": "0" }, 200, function () {
+                $("#trayImageHolder div:first").appendTo("#trayImageHolder").width(origWidth).show();
+
+                //console.log('url(' + $("#trayImageHolder div:first").css('background-image') + ')');
+                $("#graphicsFeature").css('background-image', $("#trayImageHolder .thumbNailTray--Images:nth-child(3)")
+                    .css('background-image')).delay('400').fadeIn('normal');
+
+                //Add bounce effect
+                $("#trayImageHolder").animate({ "left": "+=40" }, 150).animate({ "left": "-=40" }, 150)
+                    .animate({ "left": "+=10" }, 100).animate({ "left": "-=10" }, 100);
+            });
+        });
+    }
+</script>
+
+<div style="height: 400px; width: 100%;" class="dropShadow">
+    <div class="graphicsContainer">
+        <div class="graphicsFeature">
+            <div id="graphicsFeature" style="height: 100%; width: 100%;
+                background-repeat: no-repeat;">
+
+            </div>
+        </div>
+        <div style="position: relative">
+            <div style="position: absolute; width: 100%; margin-left: auto; margin-right: auto; z-index: 100; border-top: 3pt solid #f8af4b">
+                <div class="pointer arrow-down">
+
+                </div>
+            </div>
+        <div class="thumbNailTray">
+
+            <div style="width: 20000px; position: relative; left: -460px" id="trayImageHolder">
+                <div class="thumbNailTray--Images" style="background-image: url(@Url.Content("~/Content/images/GraphicsFeatureSlides_dealLead.png"))">
+                </div>
+                <div class="thumbNailTray--Images" style="background-image: url(@Url.Content("~/Content/images/vectorGraphics_graphcisShowcase.png"))">
+                </div>
+                <div class="thumbNailTray--Images" style="background-image: url(@Url.Content("~/Content/images/GraphicsFeatureSlides_showcase.png"));">
+                </div>
+                <div class="thumbNailTray--Images" style="background-image: url(@Url.Content("~/Content/images/GraphicsFeatureSlides_latest.png"))">
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

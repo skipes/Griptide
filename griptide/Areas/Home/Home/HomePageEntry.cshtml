@@ -1,0 +1,33 @@
+﻿@model griptide.Domain.Entities.ContentEntry
+
+<div class="contentEntry">
+    <div class="contentEntryHeader">
+        <div>
+            <img height="75px" width="75px" src="@Model.ImagePath" style="float: left; margin: 10px; border: 3pt solid #AAA;"/>
+            <div class="contentTableHolder">
+                <table id="contentEntryTable" class="contentEntryHeaderTable">
+                    <tr>
+                        <td>
+                            @if(Model.PostID != null){
+                                string urlContent= "";
+                                urlContent = string.Format("/{0}/?postID={1}", @Model.EntryUrl, @Model.PostID);
+                                
+                                <a href="@Url.Content(urlContent)">
+                                    <span id="contentEntryTitle" class="contentTitle floatLeft generalTextHighlight">@Model.EntryTitle</span>
+                                </a>
+                            } else {
+                                <span id="contentEntryTitle" class="contentTitle floatLeft generalTextHighlight">@Model.EntryTitle</span>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span id="contentEntryDate" class="contentDate floatLeft">@Model.DateCreated</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <span id="contentEntryText" class="contentText floatLeft contentHeaderPadLeft">@Html.Raw(Model.EntryText)</span>
+</div>

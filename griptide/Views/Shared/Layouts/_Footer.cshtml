@@ -1,0 +1,63 @@
+﻿@model griptide.Models.LinkGroupsViewModel
+@{ int count = 0; 
+}  
+
+
+<div class="footerMain">
+    <div class="footerMain__Links">
+        <div class="footerMain__Links__Left footerMain__extraMargin">
+            <div style="text-align: right;">              
+                @foreach(var linkGroup in Model.LeftFooterGroup ){
+                    <div style="float: right; margin-left: 30px;">
+                    <span>@linkGroup.LinkTitle</span>
+                        <ul>
+                            @foreach(var link in linkGroup.Links){
+                                if(link.Url == null){
+                                    <li>
+                                        <a href="@Url.Action(link.Action, link.Controller)">@link.Text</a>
+                                    </li>
+                                } else {
+                                    <li>
+                                        <a href="@Url.Action(link.Url)">@link.Text</a>
+                                    </li>                                    
+                                }
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+        <a href="@Url.Action("index", "home")">
+            <div>
+                <div id="footer_griptide_logo"/>
+            </div>
+        </a>
+        <div class="footerMain__Links__Right footerMain__extraMargin">
+            <div style="text-align: left">
+                @foreach(var linkGroup in Model.RightFooterGroup ){
+                    <div style="float: left; margin-right: 30px;">
+                        <span>@linkGroup.LinkTitle</span>
+                        <ul>
+                            @foreach(var link in linkGroup.Links){
+                                if(link.Url == null){
+                                    <li>
+                                        <a href="@Url.Action(link.Action, link.Controller)">@link.Text</a>
+                                    </li>
+                                } else {
+                                    <li>
+                                        <a href="@link.Url">@link.Text</a>
+                                    </li>                                      
+                                }
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div style="clear: both;">
+        <p class="footerCopyright">Copyright 2010-2013 by Sean Kuipers.  All content under Griptide.com is original content created and owned by Sean Kuipers.  Duplication is forbidden without the owner's consent.
+                    Please contact me with any feedback or errors within the site.  Thanks for visiting griptide.com!
+        </p>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\bin\Release\griptide.Domain.dll.config
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\bin\Release\griptide.Domain.dll
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\bin\Release\griptide.Domain.pdb
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\bin\Release\EntityFramework.dll
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\bin\Release\EntityFramework.xml
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\obj\Release\griptide.Domain.csprojResolveAssemblyReference.cache
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\obj\Release\griptide.Domain.dll
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\obj\Release\griptide.Domain.pdb

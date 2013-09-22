@@ -1,0 +1,7 @@
+﻿@model griptide.Domain.Entities.MenuItem
+
+<a class="menu @Model.AdditionalClass" href="@Url.Content(string.Format("~/{0}", @Model.menuURL))">
+    <div class="@Model.MenuBreakClass">
+        <span>@Model.MenuText</span>
+    </div>
+</a>

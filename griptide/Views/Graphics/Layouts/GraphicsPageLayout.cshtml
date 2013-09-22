@@ -1,0 +1,67 @@
+﻿@model griptide.Models.HomePageEntryViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/css/gtSite.css")" rel="Stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/Content/scripts/jquery-1.9.1.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/scripts/PicViewer.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/scripts/gtShared.js")"></script>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+        <div style="background-color: #127CBF; height: auto; border-bottom: 1px solid #128cBf;">
+            <div style="width: 1000px; margin: 0 auto; height: 100px; padding-bottom: 1em;">
+                <img src="@Url.Content("~/Content/images/griptide_logo.png")" style="float: left" />
+                <img src="@Url.Content("~/Content/images/griptide_title_text.png")" style="float: left" />
+                    <!-- MENU CONTENT HOLDER -->
+                    <div class="menuContainer">
+                        @foreach (var p in Model.MenuItems)
+                        {
+                            Html.RenderPartial("~/Views/Home/MainMenu.cshtml", p);
+                        }
+                    </div>
+            </div>
+        </div>
+        <div id="t1" style="width: 100%; height: auto; overflow: hidden; clear: both; position: relative;">
+            <div id="blueFlameBuffer">
+            </div>
+            <div id="blueFlames">
+            </div>
+            <div id="mainContentContainer" style="margin-top: 2em;">
+                <div id="mainContentHeader" class="grayFade dropShadow">
+                    <!-- ContentBody CONTENT HOLDER -->
+                </div>
+                <div id="mainContent" class="dropShadow">
+@*                    <div id="quickUpdatesContainer">
+                        <!-- Quick Updates CONTENT HOLDER -->
+                        <div>
+                            <div class="quickUpdate">
+                                @foreach (var p in Model.QuickUpdateEntries)
+                                {
+                                    Html.RenderPartial("QuickUpdateEntry", p);
+                                }
+                            </div>
+                        </div>
+                    </div>*@
+@*                    <!-- ContentBody CONTENT HOLDER -->
+                    @foreach (var p in Model.ContentEntries)
+                    {
+                        Html.RenderPartial("HomePageEntry", p);
+                    }*@
+                </div>
+            </div>
+            <div id="blob" style="background-image: url('@Url.Content("~/Content/images/blob.png")'); height: 200px; width: 100%;
+                position: absolute; bottom: 0; z-index: 0;">
+            </div>
+        </div>
+        <div class="pageFooter">
+            <!-- Footer CONTENT HOLDER -->
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿@model griptide.Domain.Entities.PostEntry
+
+<div class="contentEntry">
+    <div class="contentEntryHeader">
+        <div style="display: inline; height: auto;">
+            <div class="contentTableHolder">
+                <table id="contentEntryTable" class="contentEntryHeaderTable">
+                    <tr>
+                        <td>
+                            <span id="contentEntryTitle" class="contentTitle floatLeft">@Model.PostTitle</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span id="contentEntryDate" class="contentDate floatLeft">@Model.DateCreated</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <span id="contentEntryText" class="contentText floatLeft contentHeaderPadLeft">@Html.Raw(Model.PostBody)</span>
+</div>

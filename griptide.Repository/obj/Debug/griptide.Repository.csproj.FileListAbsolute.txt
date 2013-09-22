@@ -1,0 +1,8 @@
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\griptide.Repository\bin\Debug\griptide.Repository.dll.config
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\griptide.Repository\bin\Debug\griptide.Repository.dll
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\griptide.Repository\bin\Debug\griptide.Repository.pdb
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\griptide.Repository\bin\Debug\EntityFramework.dll
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\griptide.Repository\bin\Debug\EntityFramework.xml
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\griptide.Repository\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\griptide.Repository\obj\Debug\griptide.Repository.dll
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\griptide.Repository\obj\Debug\griptide.Repository.pdb

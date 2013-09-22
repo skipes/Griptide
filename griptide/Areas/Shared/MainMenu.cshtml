@@ -1,0 +1,41 @@
+﻿@model griptide.Models.MenuList
+
+    <ul class="menuContainer">
+        @foreach(var menuItem in Model.MenuItemList){
+            @*    @*<a class="menu @menuItem.AdditionalClass" 
+                    href="@Url.Content(string.Format("~/{0}", @menuItem.menuURL))">
+                    <div class="@menuItem.MenuBreakClass">
+                        <span>@menuItem.MenuText</span>
+                    </div>
+                </a>
+                @Html.ActionLink(menuItem.MenuText, "Index", menuItem.menuURL, null, new { @class = menuItem.MenuBreakClass + " " + menuItem.AdditionalClass } );
+            }*@
+            <li>
+                <a href="@Url.Action("Index", menuItem.MenuText)" class="@menuItem.AdditionalClass">@menuItem.MenuText
+                    @if(menuItem.MenuSubItems.Count > 0){ 
+                        <text>+</text>
+                    }
+                </a>
+                
+                @if(menuItem.MenuSubItems.Count > 0){                        
+                    <div class="menuDropdown dropShadowSmall">                        
+                        <ul class="subMenuList ">
+                            @foreach(var subItem in menuItem.MenuSubItems){
+                                <li>
+                                    @if(subItem.menuController != null){
+                                        <a href="@Url.Action(subItem.menuAction, @subItem.menuController)">
+                                            @subItem.SubMenuText
+                                        </a>
+                                    } else {
+                                        <a href="@Url.Action("Index", "Home")">
+                                            @subItem.SubMenuText
+                                        </a>                                        
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </li>
+        }
+    </ul>

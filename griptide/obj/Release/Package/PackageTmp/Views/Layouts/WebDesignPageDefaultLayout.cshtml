@@ -1,0 +1,78 @@
+﻿@model griptide.Models.PageEntryViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    Html.RenderPartial(@Url.Content("~/Shared/Layouts/_Header.cshtml"));
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+        <div style="background-color: #127CBF; height: auto; border-bottom: 1px solid #128cBf;">
+            <div style="width: 1000px; margin: 0 auto; height: 100px; padding-bottom: 1em;">
+                <img src="@Url.Content("~/Content/images/griptide_logo.png")" style="float: left" />
+                <img src="@Url.Content("~/Content/images/griptide_title_text.png")" style="float: left" />
+                    <!-- MENU CONTENT HOLDER -->
+                    <div class="menuContainer">
+                        @foreach (var p in Model.MenuItems)
+                        {
+                            Html.RenderPartial(@Url.Content("~/Views/Home/MainMenu.cshtml"), p);
+                        }
+                    </div>
+            </div>
+        </div>
+        <div id="t1" style="width: 100%; height: auto; overflow: hidden; clear: both; position: relative;">
+            <div id="blueFlameBuffer">
+            </div>
+            <div id="blueFlames">
+            </div>
+            <div id="mainContentContainer" style="margin-top: 2em;">
+                <div id="mainContentHeader" class="grayFade dropShadow">
+                    <!-- ContentBody CONTENT HOLDER -->
+                    @if (Model.PostEntries != null)
+                    {
+                        foreach (var p in Model.PostEntries)
+                        {
+                            @Html.Raw(p.PostHeader);
+                        }
+                    }
+                </div>
+                <div id="mainContent" class="dropShadow">
+@*                    <div id="quickUpdatesContainer">
+                        <!-- Quick Updates CONTENT HOLDER -->
+                        <div>
+                            <div class="quickUpdate">
+                                @foreach (var p in Model.QuickUpdateEntries)
+                                {
+                                    Html.RenderPartial("QuickUpdateEntry", p);
+                                }
+                            </div>
+                        </div>
+                    </div>*@
+                    <!-- ContentBody CONTENT HOLDER -->
+                    @if(Model.ContentEntries != null){
+                        foreach (var p in Model.ContentEntries)
+                        {
+                            Html.RenderPartial(@Url.Content("~/Views/Home/PageEntry.cshtml"), p);
+                        }
+                    } else {
+                        if (Model.PostEntries != null)
+                        {
+                            foreach (var p in Model.PostEntries)
+                            {
+                                Html.RenderPartial(@Url.Content("~/Views/Home/PostEntry.cshtml"), p);
+                            }
+                        }
+                    }
+                </div>
+            </div>
+            <div id="blob" style="background-image: url('@Url.Content("~/Content/images/blob.png")'); height: 200px; width: 100%;
+                position: absolute; bottom: 0; z-index: 0;">
+            </div>
+        </div>
+        <div class="pageFooter">
+            <!-- Footer CONTENT HOLDER -->
+        </div>
+</body>
+</html>

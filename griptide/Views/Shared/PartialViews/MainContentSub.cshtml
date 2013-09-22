@@ -1,0 +1,19 @@
+﻿@model griptide.Domain.Entities.PostEntry
+
+
+@if(Model.PostSub != null){
+    @Html.Raw(Model.PostSub);   
+}
+@if(Model.LinksGroup.Links.Count() > 0){
+    <span class="sharedULSpan">Relevant Links</span>
+    <ul class="sharedUL">
+        @foreach(var link in Model.LinksGroup.Links){
+            if(!string.IsNullOrEmpty(link.Url)){
+                <li><a href="@link.Url">@link.Text</a></li>
+            } else {
+                <li><a href="@Url.Content(string.Format("~/{0}/{1}/{2}", 
+                link.Controller, link.Action, ""))">@link.Text</a></li>
+            }
+        }
+    </ul>
+}

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="griptideModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="griptideEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="contententry" EntityType="griptideModel.contententry" />
+    <EntitySet Name="entrytypecodes" EntityType="griptideModel.entrytypecode" />
+    <AssociationSet Name="EntryType_FK" Association="griptideModel.EntryType_FK">
+      <End Role="entrytypecode" EntitySet="entrytypecodes" />
+      <End Role="contententries" EntitySet="contententry" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="contententry">
+    <Key>
+      <PropertyRef Name="entryID" />
+    </Key>
+    <Property Name="entryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dateCreated" Type="DateTime" />
+    <Property Name="entryTitle" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="entryText" Type="String" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+    <Property Name="activeDate" Type="DateTime" />
+    <Property Name="activeFlag" Type="SByte" Nullable="false" />
+    <Property Name="entryTypeId" Type="Int32" Nullable="false" />
+    <Property Name="entrycol" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="imagePath" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="entrytypecode" Relationship="griptideModel.EntryType_FK" FromRole="contententries" ToRole="entrytypecode" />
+  </EntityType>
+  <EntityType Name="entrytypecode">
+    <Key>
+      <PropertyRef Name="entryTypeId" />
+    </Key>
+    <Property Name="entryTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="entryType" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="contententry" Relationship="griptideModel.EntryType_FK" FromRole="entrytypecode" ToRole="contententries" />
+  </EntityType>
+  <Association Name="EntryType_FK">
+    <End Role="entrytypecode" Type="griptideModel.entrytypecode" Multiplicity="1" />
+    <End Role="contententries" Type="griptideModel.contententry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entrytypecode">
+        <PropertyRef Name="entryTypeId" />
+      </Principal>
+      <Dependent Role="contententries">
+        <PropertyRef Name="entryTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
