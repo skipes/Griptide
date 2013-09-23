@@ -1,0 +1,300 @@
+CREATE DATABASE  IF NOT EXISTS `griptide` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `griptide`;
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+--
+-- Host: localhost    Database: griptide
+-- ------------------------------------------------------
+-- Server version	5.5.33
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `category` (
+  `categoryID` int(11) NOT NULL AUTO_INCREMENT,
+  `categoryName` varchar(45) DEFAULT NULL,
+  `createdDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`categoryID`),
+  UNIQUE KEY `categoryID_UNIQUE` (`categoryID`),
+  UNIQUE KEY `categoryName_UNIQUE` (`categoryName`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category`
+--
+
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES (1,'Graphics','2013-03-25 00:42:56'),(2,'WebDesign','2013-03-25 00:42:56'),(3,'Gallery','2013-04-01 08:23:34');
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contententries`
+--
+
+DROP TABLE IF EXISTS `contententries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contententries` (
+  `entryID` int(11) NOT NULL AUTO_INCREMENT,
+  `dateCreated` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `entryTitle` varchar(200) DEFAULT NULL,
+  `entryText` longtext,
+  `activeDate` datetime DEFAULT NULL,
+  `activeFlag` tinyint(4) NOT NULL DEFAULT '0',
+  `entryTypeId` int(11) NOT NULL,
+  `isQuickUpdate` int(1) NOT NULL DEFAULT '0',
+  `entrycol` varchar(45) DEFAULT NULL,
+  `imageID` int(11) DEFAULT NULL,
+  `postID` int(12) DEFAULT NULL,
+  `categoryID` int(11) DEFAULT '0',
+  `entryURL` varchar(200) DEFAULT NULL,
+  `controller` varchar(45) DEFAULT NULL,
+  `action` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`entryID`),
+  UNIQUE KEY `entryID_UNIQUE` (`entryID`),
+  KEY `EntryType_FK_idx` (`entryTypeId`),
+  CONSTRAINT `EntryType_FK` FOREIGN KEY (`entryTypeId`) REFERENCES `entrytypecode` (`entryTypeId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contententries`
+--
+
+LOCK TABLES `contententries` WRITE;
+/*!40000 ALTER TABLE `contententries` DISABLE KEYS */;
+INSERT INTO `contententries` VALUES (1,'2013-08-17 18:00:00','TEST','<b>Lorem ipsum dolor sit amet</b>, consectetur adipiscing elit. Nam vitae lectus a eros rutrum porta a id magna. Morbi ut elit augue. Praesent sodales tortor non erat consectetur congue. Nam sit amet pellentesque ante. Integer nec lectus sit amet orci iaculis pulvinar vitae a nulla. Vestibulum suscipit mauris id erat pretium semper. Praesent porttitor suscipit leo, at facilisis orci congue sit amet. Sed sed enim in odio hendrerit vestibulum sit amet sed quam. Integer nec eleifend est. Ut eleifend, nisi a scelerisque facilisis, lectus diam varius ligula, sed placerat odio lacus non nunc. In ac consequat augue. Curabitur adipiscing nisl sit amet mauris pulvinar a feugiat risus convallis. Nunc nulla ante, commodo sit amet sodales vel, rutrum volutpat nibh.','2013-08-17 12:00:00',0,1,0,NULL,1,1,0,'Graphics','graphics','index'),(8,'2013-08-17 18:00:00','Thanks for coming!','Thanks for viewing the my graphics!  I\'m hoping to spend more time in Illustrator soon and getting some new and improved images together.  Until then, hope you enjoy!','2013-08-17 12:00:00',1,3,1,NULL,2,NULL,0,NULL,NULL,NULL),(12,'2013-08-17 18:00:00','Gallery Ideas','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I though i would reserve this area for the purpose of displaying some physical media artwork that i may create or come across. &nbsp;I have it in mind to dig up some of my old cartoons to display here. &nbsp;Also, i would love to spend some time putting together some drawings to fill this space. &nbsp;Honestly, I&#39;m a bit rusty in this area, so I&#39;ll have to brush up my skills a bit.','2013-08-17 12:00:00',1,5,0,NULL,5,NULL,0,NULL,NULL,NULL),(13,'2013-08-17 18:00:00','Ideas','This section is intended to be something of a \"sticky note\" section where i can throw down some ideas that could fun to try add or look good in the graphics gallery.  I tend to keep the memory of an idea fresh for a few days before it slips away.  I wish I could just jump on them, but time just seems to go faster than it used to,','2013-08-17 12:00:00',1,6,0,NULL,6,NULL,0,NULL,NULL,NULL),(14,'2013-08-17 18:00:00','About myself...','<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Glad you came to check out Griptide.com. My name is Sean Kuipers and I am the proud creator of Griptide and the creator of the content in it. &nbsp;This website has been a big goal for me to finish and put up. &nbsp;I wanted this to have a playground of sorts to explore elements of graphics and web design. &nbsp;Also, i wanted to share this content to others that my have similar interest.</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I\'m a professional software engineer with over seven years of experience. &nbsp;I ended up with an appreciation for functional and stylish web applications. &nbsp;One of my goals with this website is to take &nbsp;some of my interest in learning new development skills and being able to display working samples and put up some fun projects. &nbsp;With that, i enjoy making graphics in Adobe Illustrator that are silly and interesting. &nbsp;So I earnestly expect to create new pieces and designs to include into this site.</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Also, I care to receieve any feedback from you! &nbsp;Go ahead and drop me a line <a href=\"mailto:skuipers@griptide.com\">here</a>. &nbsp;Again, thanks for coming!&nbsp;</p>','2013-08-17 12:00:00',1,7,0,NULL,4,NULL,0,'4',NULL,NULL),(16,'2013-08-17 18:00:00','Countdown Demo','This is a simple demo of a visible timer that shrinks in height the closer it get\'s to zero seconds.  While it decreases you\'ll see a gradient reflect the remaining time by starting on green and moving to yellow to red.','2013-06-29 19:57:33',1,8,0,NULL,7,2,0,NULL,'webdesign','jquery'),(17,'2013-08-17 18:00:00','Web Design Added','You\'ll find samples of web inspired work.  This includes css, html, and jquery so far.  Take a look at the samples and visuals.','2013-08-17 12:00:00',1,2,1,NULL,1,NULL,2,NULL,'webdesign','index'),(19,'2013-08-17 18:00:00','Box Juggler','This was a simple demo demonstrating objects that use jquery and css to float a box around a square container and continue to circulate.  Several boxes moving at a time give it a bit of a \"juggling\" effect.','2013-08-17 12:00:00',1,8,0,NULL,7,4,0,NULL,'webdesign','jquery'),(20,'2013-08-17 18:00:00','Welcome to the brand new Griptide.com!','I\'m Sean Kuipers, creator of this site and content, and I want to thank you and welcome you to enjoy Griptide.com!  My goal for the site is to enjoy fun graphic visuals and explore web design elements.  I wanted this to be a dynamic playground where I can deploy coold designs and ideas.  I hope to keep adding content frequently, so check back again soon!','2013-08-17 12:00:00',1,1,0,NULL,2,NULL,0,'','',''),(21,'2013-08-17 18:00:00','Checkout the Graphics section','I enjoy creating bright and fun vector graphics in my spare time.  A lot of them have a strong \"comic\" style.  I\'ve put up several i\'ve finished over the last few years.  Some have been modified in Photoshop as well.  I\'m excited to put up some new and original content there soon!','2013-08-17 12:00:00',1,1,0,NULL,3,NULL,0,'','',''),(22,'2013-08-17 18:00:00','Web Design','I wanted to have a place to try out some new web design ideas.  So here it is!!!  You\'ll find some functional Jquery samples and other web-design related pages I\'ve put together.  I\'ll be expanding this area as the ideas roll in, especially the Jquery!','2013-08-17 12:00:00',1,1,0,NULL,1,NULL,2,'','',''),(23,'2013-08-17 18:00:00','Graphics Section is Up','I\'ve got my collection of original graphical content in here.  It\'s now live for your viewing pleasure!','2013-08-17 12:00:00',1,2,1,NULL,3,NULL,3,NULL,'graphics','index'),(24,'2013-08-17 18:00:00','About Griptide...','Find out more about griptide and who I am.','2013-08-17 12:00:00',1,2,1,NULL,3,NULL,3,NULL,'about','index'),(25,'2013-08-17 18:00:00','What\'s Available in Graphics','The graphics showcase is the bulk of this section.  I\'ve been really interested in vector graphics for several years now.  Even earlier than that i was making comics in MS paint.  Adobe Illustrator is now my program of choice (for obvious reasons).  I\'ve really tried to get my own ideas and style into my artwork.  I\'m especially hopeful to get some new content up and added soon.  Thanks for taking a look!','2013-08-17 12:00:00',1,3,0,NULL,3,NULL,1,'','graphics','showcase'),(26,'2013-08-17 18:00:00','Jquery!','Examples and working demos of small jquery projects.  Just a few to get up and running.  Expect more to show up later on.','2013-08-17 12:00:00',1,2,1,NULL,7,NULL,0,NULL,'webdesign','jquery'),(27,'2013-08-17 18:00:00','What You\'ll Find in the Web Design section.','There\'s a nature tie between web design and graphics, so I wanted to display some Html, CSS, and Javascript related projects here.  I like to explore some small and fun jquery projects because they have such a cool visual presentation in web design.  Also, in the showcase i\'ve singled out some of my larger projects that I have enjoyed working on.','2013-08-17 12:00:00',1,4,0,NULL,1,NULL,2,'',NULL,NULL),(28,'2013-08-17 18:00:00','Ideas section is up now','I\'m going to try this out as something of an idea repository to track thoughts on things i\'d like to add into this site.','2013-08-17 12:00:00',1,2,1,NULL,6,NULL,0,NULL,'ideas','index'),(29,'2013-09-22 17:52:23','Adding Meta tags and Structured Data markup','Now that I\'ve been up and live for a time I\'m revisiting my site for searchability sake.  I was curious what the results show if I google the site and found that I need to rework the site content to display more friendly.  Aside from meta tags, i searched to see what is required to represent the dynamic page contents.  Google suggested structured data implementation should cover this.  I\'m now working on understanding this better and integrating it into my page views.  I\'m starting with a simple approach using some like the \"<a href=\"http://schema.org/Article\">Article</a>\" type.','2013-08-17 12:00:00',1,6,0,NULL,6,NULL,0,NULL,'ideas','index'),(30,'2013-09-22 18:47:25','Working on Searchability','I\'ve been spending some time making Griptide search engine results more friendly.  More details in the <a href=\"ideas\">Ideas</a> section.','2013-08-17 12:00:00',1,1,0,NULL,6,NULL,0,NULL,NULL,NULL),(31,'2013-09-23 04:54:04','Site email is broken, being fixed ','If you have tried reaching me through the griptide site email, i appreciate that.  The email system for my  domain is malfunctioning and I\'\"m  looking at getting it fixed.  You\'\'re welcome to email me at skipes@hotmail.com until then.','2013-08-17 12:00:00',1,1,0,NULL,1,NULL,0,NULL,NULL,NULL),(32,'2013-09-23 04:59:44','Correct Sizing for mobile devices','Page width is wonky when viewing on some mobile devices, especially phones.  Going to research this and make a fix soon.','2013-08-17 12:00:00',1,6,0,NULL,6,NULL,0,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `contententries` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `entrytypecode`
+--
+
+DROP TABLE IF EXISTS `entrytypecode`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `entrytypecode` (
+  `entryTypeId` int(11) NOT NULL AUTO_INCREMENT,
+  `entryType` varchar(45) NOT NULL,
+  `dateCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`entryTypeId`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `entrytypecode`
+--
+
+LOCK TABLES `entrytypecode` WRITE;
+/*!40000 ALTER TABLE `entrytypecode` DISABLE KEYS */;
+INSERT INTO `entrytypecode` VALUES (1,'HomePageEntry','2013-02-03 11:42:38'),(2,'QuickUpdateEntry','2013-02-04 11:34:10'),(3,'GraphicsEntry','2013-03-24 09:49:15'),(4,'WebDesignPageEntry','2013-03-25 02:59:38'),(5,'GalleryEntry','2013-04-01 08:37:48'),(6,'IdeasEntry','2013-04-01 08:37:48'),(7,'About','2013-04-01 08:37:48'),(8,'Jquery','2013-06-30 07:56:14');
+/*!40000 ALTER TABLE `entrytypecode` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `images`
+--
+
+DROP TABLE IF EXISTS `images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `images` (
+  `imageID` int(11) NOT NULL AUTO_INCREMENT,
+  `imageText` varchar(200) DEFAULT NULL,
+  `imageFile` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`imageID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `images`
+--
+
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+INSERT INTO `images` VALUES (1,'Web Design Icon','webDesignIcon.png'),(2,'Home Icon','homeIcon.png'),(3,'Graphics Icon','graphicsIcon.png'),(4,'About Icon','aboutIcon.png'),(5,'Gallery Icon','galleryIcon.png'),(6,'Experiments Icon','experimentsIcon.png'),(7,'Jquery Icon','jqueryIcon.png');
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `links`
+--
+
+DROP TABLE IF EXISTS `links`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `links` (
+  `linkID` int(11) NOT NULL AUTO_INCREMENT,
+  `linkGroupID` int(11) NOT NULL,
+  `text` varchar(200) NOT NULL,
+  `url` varchar(2000) DEFAULT NULL,
+  `controller` varchar(45) DEFAULT NULL,
+  `action` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`linkID`),
+  KEY `Links_LinksGroupID_FK_idx` (`linkGroupID`),
+  CONSTRAINT `Links_LinksGroup_FK` FOREIGN KEY (`linkGroupID`) REFERENCES `linksgroups` (`linkGroupID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `links`
+--
+
+LOCK TABLES `links` WRITE;
+/*!40000 ALTER TABLE `links` DISABLE KEYS */;
+INSERT INTO `links` VALUES (1,1,'Home',NULL,'home','index'),(2,1,'Graphics',NULL,'graphics','index'),(3,1,'Web Design',NULL,'webdesign','index'),(4,1,'Gallery',NULL,'gallery','index'),(5,1,'About',NULL,'about','index'),(6,1,'Experiments',NULL,'experiments','index'),(7,2,'Graphics Home',NULL,'graphics','index'),(8,2,'Showcase',NULL,'graphics','showcase'),(9,2,'Latest Entry',NULL,'graphics','latestentry'),(10,3,'Web Design Home',NULL,'webdesign','index'),(11,3,'Showcase',NULL,'webdesign','showcase'),(12,3,'Jquery',NULL,'webdesign','jquery'),(13,3,'Latest Entry',NULL,'webdesign','latestentry'),(14,4,'Contact / Feedback','mailto:skuipers@griptide.com',NULL,NULL),(15,4,'Report a site issue','mailto:skuipers@griptide.com',NULL,NULL),(16,5,'Box Juggler (jsfiddle.net)','http://jsfiddle.net/j7HG6/1/',NULL,NULL),(17,6,'Jquery Countdown Timer (jsfiddle.net)','http://jsfiddle.net/sXP6p/9/',NULL,NULL);
+/*!40000 ALTER TABLE `links` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `linksgroups`
+--
+
+DROP TABLE IF EXISTS `linksgroups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `linksgroups` (
+  `linkGroupID` int(11) NOT NULL,
+  `linkTitle` varchar(200) DEFAULT NULL,
+  `activeFlag` int(1) NOT NULL DEFAULT '0',
+  `isFooterGroup` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`linkGroupID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `linksgroups`
+--
+
+LOCK TABLES `linksgroups` WRITE;
+/*!40000 ALTER TABLE `linksgroups` DISABLE KEYS */;
+INSERT INTO `linksgroups` VALUES (1,'Griptide',1,1),(2,'Graphics',1,1),(3,'Web Design',1,1),(4,'Other',1,1),(5,'Jquery Juggler (jsfiddle.net)',1,1),(6,'Jquery Timer (jsfiddle.net)',1,1);
+/*!40000 ALTER TABLE `linksgroups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `menuitems`
+--
+
+DROP TABLE IF EXISTS `menuitems`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `menuitems` (
+  `menuID` int(11) NOT NULL AUTO_INCREMENT,
+  `menuText` varchar(45) DEFAULT NULL,
+  `displayOrder` int(11) NOT NULL,
+  `enabledFlag` tinyint(4) NOT NULL DEFAULT '0',
+  `dateCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `menuitemscol` varchar(45) DEFAULT NULL,
+  `menuURL` varchar(200) DEFAULT NULL,
+  `additionalClass` varchar(200) DEFAULT NULL,
+  `menuBreakClass` varchar(45) DEFAULT NULL,
+  `menuController` varchar(45) DEFAULT NULL,
+  `menuAction` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`menuID`,`dateCreated`),
+  UNIQUE KEY `menuID_UNIQUE` (`menuID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menuitems`
+--
+
+LOCK TABLES `menuitems` WRITE;
+/*!40000 ALTER TABLE `menuitems` DISABLE KEYS */;
+INSERT INTO `menuitems` VALUES (1,'Home',1,1,'2013-02-17 12:38:27',NULL,'Home','menu','menu_break_r',NULL,NULL),(2,'Graphics',2,1,'2013-02-17 12:38:27',NULL,'Graphics','menu','menu_break_l menu_break_r',NULL,NULL),(3,'WebDesign',3,1,'2013-02-17 12:38:27',NULL,'WebDesign','menu','menu_break_l menu_break_r',NULL,NULL),(4,'Gallery',4,1,'2013-02-17 12:38:27',NULL,'Gallery','menu','menu_break_l menu_break_r',NULL,NULL),(5,'About',6,1,'2013-02-17 12:38:27',NULL,'About','menu','menu_break_l',NULL,NULL),(6,'Ideas',5,1,'2013-03-20 09:25:39',NULL,'Ideas','menu','menu_break_l menu_break_r',NULL,NULL);
+/*!40000 ALTER TABLE `menuitems` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `menusubitems`
+--
+
+DROP TABLE IF EXISTS `menusubitems`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `menusubitems` (
+  `subMenuID` int(11) NOT NULL AUTO_INCREMENT,
+  `menuID` int(11) DEFAULT NULL,
+  `subMenuText` varchar(200) DEFAULT NULL,
+  `displayOrder` varchar(45) DEFAULT NULL,
+  `enabledFlag` tinyint(4) DEFAULT '0',
+  `dateCreated` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `additionalClass` varchar(200) DEFAULT NULL,
+  `menuUrl` varchar(200) DEFAULT NULL,
+  `menuController` varchar(45) DEFAULT NULL,
+  `menuAction` varchar(45) DEFAULT NULL,
+  UNIQUE KEY `menuSubItemID_UNIQUE` (`subMenuID`),
+  KEY `menutItems_FK_idx` (`menuID`),
+  CONSTRAINT `menutItems_FK` FOREIGN KEY (`menuID`) REFERENCES `menuitems` (`menuID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menusubitems`
+--
+
+LOCK TABLES `menusubitems` WRITE;
+/*!40000 ALTER TABLE `menusubitems` DISABLE KEYS */;
+INSERT INTO `menusubitems` VALUES (1,2,'Graphics Home','1',1,'2013-05-05 10:32:00',NULL,NULL,'graphics','Index'),(2,2,'Showcase','2',1,'2013-05-05 10:32:00',NULL,NULL,'graphics','Showcase'),(3,2,'Latest Entry','1',1,'2013-05-05 10:32:14',NULL,NULL,'graphics','LatestEntry'),(4,2,'Archived Work','1',0,'2013-05-05 10:32:14',NULL,'',NULL,NULL),(5,3,'Web Design Home','2',1,'2013-05-05 10:32:00',NULL,NULL,'WebDesign','Index'),(6,3,'Showcase','1',1,'2013-05-05 10:32:14',NULL,NULL,'WebDesign','Showcase'),(7,3,'Archived Work','5',0,'2013-05-05 10:32:14',NULL,'',NULL,NULL),(8,3,'Jquery','3',1,'2013-06-30 07:45:50',NULL,NULL,'WebDesign','Jquery'),(9,3,'Latest Entry','4',1,'2013-06-30 07:45:50',NULL,NULL,'WebDesign','LatestEntry');
+/*!40000 ALTER TABLE `menusubitems` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `postentries`
+--
+
+DROP TABLE IF EXISTS `postentries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `postentries` (
+  `PostID` int(11) NOT NULL AUTO_INCREMENT,
+  `DateCreated` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `PostTitle` varchar(2000) DEFAULT NULL,
+  `PostHeader` longtext,
+  `PostBody` longtext,
+  `PostSub` longtext,
+  `ActiveFlag` int(1) NOT NULL DEFAULT '1',
+  `LinkGroupID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`PostID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `postentries`
+--
+
+LOCK TABLES `postentries` WRITE;
+/*!40000 ALTER TABLE `postentries` DISABLE KEYS */;
+INSERT INTO `postentries` VALUES (1,'2013-08-17 18:00:00','Post Test Number One','<img style=\"border-2pt: solid #AAA; height: auto; width: auto; height:450px; width:700px; background: #CCC url(\'../content/images/sherrif_monkey.png\'); overflow:hidden;; \"/>','In this body all i really care about is having text show up!','<h1>TESTME DAWG!</h1>',1,1),(2,'2013-08-17 18:00:00','Understanding the Jquery Countdown Demo','Timer','<p>&nbsp&nbspThis isn\'t a tricky demo, but the goal is executing the timer and allowing the functionality to be stopped, started, and reset. Initially i was inclined to animate the timer using jquery, but tying in the pause/play functionality would require some way to interrupt the jquery animation. Instead I opted to set the timer height manually during the countdown.</p>\r \r <h4>1.&nbspSetting it up</h4>\r <pre>\r <xmp>\r 	timer = 10000;\r     timeRemain = timer;\r     timeInterval = 53;\r     decimals = 2;\r \r     $(\".timerDisplay\").text(parseFloat(Math.floor(timer) / 1000).toFixed(2));\r </xmp>\r </pre>\r <p>&nbsp&nbsp\r In order to give our timer some flexibility we\'ve got variables that can be set to distinguish how we expect the timer o work.  The \"timer\" variable itself is how many miliseconds we start the timer on.  The \"timeInterval\" is how many miliseconds we define our frequency in for updating the amount of time remaining.  And we\'re displaying two decimal digits throughout the script, so we\'ll define it once as a variable.  Lastly, we convert our timer to seconds by dividing by 1000 and setting the decimal value to two places.\r </p>\r \r <h4>2.&nbspAdding Controls</h4>\r <pre>\r <xmp>\r $(\".playButton\").click(function () {\r         clearTimeout(setTimeDisplay);\r         //timeRemain = timer;\r         SetTimer();\r     });\r \r     $(\".pauseButton\").click(function () {\r         clearTimeout(setTimeDisplay);\r     });\r \r     $(\".resetButton\").click(function () {\r         clearTimeout(setTimeDisplay);\r         timeRemain = timer;\r         $(\".meterFill\").css(\"background-color\", \"rgb(0%, 100%, 0%)\");\r         $(\".timerDisplay\").text(parseFloat(Math.floor(timer) / 1000)\r\n		.toFixed(decimals));\r         $(\".meterEmpty\").height(\"0%\");\r     });\r </xmp>\r </pre>\r <p>&nbsp&nbspNow we\'re adding our controls to give us the ability to play,stop, and pause the timer.  SetTimeDisplay is going to be our interval that updates the timer.  So when we use the play button it will clear it out and start again.  Pause and stop will also stop the interval from running, but stop will then reset the timer to its original setup.\r </p>\r \r <h4>3.&nbspGetting Into the Guts</h4>\r <pre>\r <xmp>\r function SetTimer() {\r     timeRemain = parseFloat(timeRemain - timeInterval, 10);\r     if (timeRemain > 0) {\r         var newHeight = 100 - ((timeRemain / timer) * 100);\r         $(\".meterEmpty\").height(newHeight + \"%\");\r \r         //Gradient based on height.  Go from Green -> yellow -> red.\r         if (newHeight <= 50) {\r             $(\".meterFill\").css(\"background-color\",\r                                 \"rgb(\" + (newHeight * 2) + \"%,100%, 0%)\");\r         } else {\r             $(\".meterFill\").css(\"background-color\",\r                                 \"rgb(100%,\" + ((100 - newHeight) * 2) + \"%, 0%)\");\r         }\r \r         var newVal = parseFloat(Math.floor(timeRemain) / 1000).toFixed(decimals);\r         if (newVal > 0) {\r             $(\".timerDisplay\").text(parseFloat(newVal));\r         }\r         setTimeDisplay = setTimeout(function () { SetTimer(); }, timeInterval);\r     } else {\r         $(\".meterEmpty\").height(\"100%\");\r         $(\".timerDisplay\").text(\"0.000\");\r         clearTimeout(setTimeDisplay);\r     }\r }\r </xmp>\r </pre>\r <p>&nbsp&nbspSo now we\'re ready to look at the inner-workings of the timer.  First we calculate the remaining time by using our decreasing \"timeRemain\" variable.  When the SetTimer() function is called it\'s being decreased by the interval value.\r </p>\r <p>&nbsp&nbspIn the next step I ran into a minor bug where the timeRemain would consistently become a negative number when subtracting the \"timeInterval\" value.  So now Icheck this value before i display it.  If it\'s greater than zero i look at how i need to manipulate the timer.  Otherwise, i manually set the timer to zero and stop the interval.\r </p>\r <p>&nbsp&nbspIn order to get the gradient to show variation I\'m taking a percentage of the begining time and the remaining time.  This also give me the height to set my timer bar so that it reflects the burn-down.  For the colors i use the value similarly to calculate the RGB value of the timer background.  So consider that full green is at 100%, pure yellow is at 50%, and pure red is 0%.  So between 50% and 100% i decrease the green value to gradient into the yellow value.  When i fall below 50% time remaining, i want to ramp up the red value in the RGB until we reach 0%.\r </p>\r \r <h4>4.&nbspConclusion</h4>\r <p>&nbsp&nbspI think you can get some good mileage out of this example for how many different ways you can utilize the functionality and modifying the display.  Plus, seeing how easy it was to control the javascript instead of using jquery animation gives you strong control over the timer functionality.\r </p>','<span>Take a look at the complete script</span><pre>var timer = 0;\r var timeRemain = 0\r var timeInterval = 0;\r var setTimeDisplay = null;\r \r $(document).ready(function () {\r     timer = 10000;\r     timeRemain = timer;\r     timeInterval = 53;\r     decimals = 2;\r \r     $(\".timerDisplay\").text(parseFloat(Math.floor(timer) / 1000).toFixed(2));\r     //SetTimer();\r \r     $(\".playButton\").click(function () {\r         clearTimeout(setTimeDisplay);\r         //timeRemain = timer;\r         SetTimer();\r     });\r \r     $(\".pauseButton\").click(function () {\r         clearTimeout(setTimeDisplay);\r     });\r \r     $(\".resetButton\").click(function () {\r         clearTimeout(setTimeDisplay);\r         timeRemain = timer;\r         $(\".meterFill\").css(\"background-color\", \"rgb(0%, 100%, 0%)\");\r         $(\".timerDisplay\").text(parseFloat(Math.floor(timer) / 1000).toFixed(2));\r         $(\".meterEmpty\").height(\"0%\");\r     });\r });\r \r function SetTimer() {\r     timeRemain = parseFloat(timeRemain - timeInterval, 10);\r     if (timeRemain > 0) {\r         var newHeight = 100 - ((timeRemain / timer) * 100);\r         $(\".meterEmpty\").height(newHeight + \"%\");\r \r         //Gradient based on height.  Go from Green -> yellow -> red.\r         if (newHeight <= 50) {\r             $(\".meterFill\").css(\"background-color\",\r                                 \"rgb(\" + (newHeight * 2) + \"%,100%, 0%)\");\r         } else {\r             $(\".meterFill\").css(\"background-color\",\r                                 \"rgb(100%,\" + ((100 - newHeight) * 2) + \"%, 0%)\");\r         }\r \r         var newVal = parseFloat(Math.floor(timeRemain) / 1000).toFixed(2);\r         if (newVal > 0) {\r             $(\".timerDisplay\").text(parseFloat(newVal));\r         }\r         setTimeDisplay = setTimeout(function () { SetTimer(); }, timeInterval);\r     } else {\r         $(\".meterEmpty\").height(\"100%\");\r         $(\".timerDisplay\").text(\"0.000\");\r         clearTimeout(setTimeDisplay);\r     }\r }\r </pre>',1,6),(3,'2013-08-17 18:00:00','QuickUpdate Test',NULL,'Just Checking to make URL link lands here as expected',NULL,1,0),(4,'2013-08-17 18:00:00','Making the Divs come to Life using Jquery','Juggler','<p>\r\nThis demo was fun to put together but required a little finesse to capture the smooth animation of the boxes all the way around the container.  Also, having the correct CSS configuration for the float settings was important to make the movements fluid and seamless.  I also enjoy the random colors and seeing the transparency where the boxes overlap each other.\r\n</p>\r\n\r\n<h4>1.  Let\'s start with the boxes</h4>\r\n<pre>\r\n	<xmp>\r\n		$(\".floater\").each(function (index) {\r\n			var box = this;\r\n			//assign a random color\r\n			var rgbVals = GetRandVals();\r\n			$(this).css(\'background-color\', ( \"rgba(\"+ rgbVals[0] + \",\" \r\n				+ rgbVals[1] + \",\" + rgbVals[2] + \", 5)\" ) );\r\n			setTimeout(function () {\r\n				Cycle($(box))\r\n			}, index * 300);\r\n		});\r\n		\r\n		.....\r\n		function GetRandVals() {\r\n			// get a random value (0 - 255) for each R,G,and B.\r\n			var rgb = new Array();\r\n\r\n			for (var i = 0; i < 3; i++) {\r\n				rgb.push(Math.round(Math.random() * (255 - 0) + 0));\r\n			}\r\n			return rgb;\r\n		}\r\n	</xmp>\r\n</pre>\r\n\r\n<p>First off, we\'re going to take an instance of the floater box and grab some random color values using the GetRandVals() function.  We\'ll get a random RGB value for each box that will return to the floater and define the background-color attribute.  Then we associate that instance with the animation events that \"juggle\" it around the parent container, and keep it moving.\r\n</p>\r\n\r\n<h4>2.  Creating the Cycle</h4>\r\n<pre>\r\n<xmp>\r\n	setTimeout(function () {\r\n            Cycle($(box))\r\n    }, index * 300);\r\n	\r\n	.....\r\n	\r\n	var totalDuration = 2000;\r\n	var quarterDuration = totalDuration / 4;\r\n	function Cycle(box) {\r\n		setInterval(function () {\r\n			var slideRight = $(\".jugglerMain\").width() - box.width();\r\n			var slideDown = $(\".jugglerMain\").height() - box.height();\r\n			$(box).animate({ left: slideRight }, quarterDuration).animate({ \r\n				top: slideDown }, quarterDuration);\r\n			$(box).animate({ left: \'0\' }, quarterDuration).animate({ top: \'0\' }, 		\r\n				quarterDuration);\r\n			if ($(\".jugglerMain__loadingText\").is(\":visible\")) {\r\n				$(\".jugglerMain__loadingText\").fadeOut();\r\n			}\r\n		}, totalDuration);\r\n	}\r\n</xmp>\r\n</pre>\r\n\r\n<p>We have our animations defined in the Cycle() function.  There are some variables there that hold the total duration of the cycle and a quarter duration(in miliseconds).  We\'re passing in the \"floater\" box instance that will be receiving the animations. Now we\'re taking the \".jugglerMain\" parent container so we can correct our cycle path well in the bounds of the container.  Now we\'re doing a simple slide along the top border all the way over to the right side.\r\n</p>\r\n<p>\r\nThe next act we\'re performing is chained to the same animation call to make a seamless move. Also, we\'re using the \"top\" attribute to slide the square down to the bottom agains the right border.  So here\'s where it\'s easy to get derailed, because we need to think in terms of location by using \"top\" and \"left\".  We are no longer \"sliding\" the floater.  We\'re actually reversing the natural \"left\" and \"top\" position values.  So now we tell the floater it\'s left position will be zero, and we animate the call.  Same with the top, we\'re now defining the top position relative to the parent container.  These events are also chained and give a seamless flow.  By the time the animations are finished the setTimeout is ready for the floater to continue on its next cycle.\r\n</p>\r\n<h4>3.  Conclusion</h4>\r\n<p>\r\nThis became a cool blend of CSS and Jquery.  It\'s not complex in the tools we\'re using for execution, but it was fun to test we have to think a bit backwards to make the full circuit.\r\n</p>','<span>And here is the complete javascript...</span><br/><pre class=\"prettyprint\">$(document).ready(function () {\r     AdjustLoadingText();\r     $(\".floater\").each(function (index) {\r         var box = this;\r         //assign a random color\r         var rgbVals = GetRandVals();\r         $(this).css(\"background-color\", ( \"rgba(\"+ rgbVals[0] + \",\" \r\n		+ rgbVals[1] + \",\" + rgbVals[2] + \", 5)\" ) );\r         setTimeout(function () {\r             Cycle($(box))\r         }, index * 300);\r \r     });\r });\r \r var totalDuration = 2000;\r var quarterDuration = totalDuration / 4;\r function Cycle(box) {\r     setInterval(function () {\r         var slideRight = $(\".jugglerMain\").width() - box.width();\r         var slideDown = $(\".jugglerMain\").height() - box.height();\r         $(box).animate({ left: slideRight }, quarterDuration).animate({ top: slideDown }, quarterDuration);\r         $(box).animate({ left: \"0\" }, quarterDuration).animate({ top: \"0\" }, quarterDuration);\r         if ($(\".jugglerMain__loadingText\").is(\":visible\")) {\r             $(\".jugglerMain__loadingText\").fadeOut();\r         }\r     }, totalDuration);\r }\r \r function GetRandVals() {\r     // get a random value (0 - 255) for each R,G,and B.\r     var rgb = new Array();\r \r     for (var i = 0; i < 3; i++) {\r         rgb.push(Math.round(Math.random() * (255 - 0) + 0));\r     }\r     return rgb;\r }\r \r function AdjustLoadingText() {\r     //Center the span to shift left, based on its element size.\r     var newMargin = $(\".jugglerMain__loadingText\").width();\r     $(\".jugglerMain__loadingText\").css(\"margin-left\", ( parseInt( (newMargin / 2) * -1) ) );\r }</pre>',1,5);
+/*!40000 ALTER TABLE `postentries` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2013-09-22 22:08:15

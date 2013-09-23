@@ -30,8 +30,7 @@ namespace griptide.Controllers
                 pageViewModel = new PageEntryViewModel
                 {
                     ContentEntries = entryRepository.ContentEntry.Where(a => a.EntryTypeID == 6 && a.ActiveFlag == 1
-                    && a.IsQuickUpdate == 0)
-                    .OrderByDescending(a => a.EntryTypeID).Take(5),
+                    && a.IsQuickUpdate == 0).OrderByDescending(a => a.EntryID).Take(10)
                 };
             }
             else
