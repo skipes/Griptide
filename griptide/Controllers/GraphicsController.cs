@@ -60,6 +60,8 @@ namespace griptide.Controllers
 
             ViewBag.Title = "Graphics";
             ViewBag.Category = "Graphics";
+            ViewBag.MetaDesc = ConstantValues.GraphicsMetaDesc;
+            ViewBag.MetaKeywords = ConstantValues.GraphicsMetaKeywords;
 
             return View("Graphics", pageViewModel);
         }
@@ -70,6 +72,9 @@ namespace griptide.Controllers
             GraphicsShowcaseViewModel pageViewModel = new GraphicsShowcaseViewModel();
             pageViewModel.GraphicsFiles = Directory.EnumerateFiles(Server.MapPath("~/content/images/Graphics/Showcase"))
                 .Where(a => a.ToLower().EndsWith(".jpg") || a.ToLower().EndsWith(".png") || a.ToLower().EndsWith(".jpg"));
+            ViewBag.MetaDesc = ConstantValues.GraphicsShowcaseMetaDesc;
+            ViewBag.MetaKeywords = ConstantValues.GraphicsShowcaseMetaKeywords;
+
             return View("Showcase", pageViewModel);
         }
 
@@ -81,6 +86,8 @@ namespace griptide.Controllers
                 ContentEntries = entryRepository.ContentEntry.Where(a => a.EntryTypeID == 3 && a.ActiveFlag == 1)
                     .OrderByDescending(a => a.EntryID).Take(1)
             };
+            ViewBag.MetaDesc = ConstantValues.GraphicsMetaDesc;
+            ViewBag.MetaKeywords = ConstantValues.GraphicsMetaKeywords;
 
             return View("LatestEntry", pageViewModel);
         }

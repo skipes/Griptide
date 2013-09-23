@@ -32,6 +32,8 @@ namespace griptide.Controllers
             };
 
             ViewBag.Title = "Griptide - Graphics and Web";
+            ViewBag.MetaDesc = ConstantValues.HomeMetaDesc;
+            ViewBag.MetaKeywords = ConstantValues.HomeMetaKeyWords;
 
             return View("HomePage", homeViewModel);
         }

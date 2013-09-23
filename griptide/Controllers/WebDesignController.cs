@@ -50,6 +50,9 @@ namespace griptide.Controllers
 
             ViewBag.Title = "Griptide - Graphics";
             ViewBag.Category = "Web Design";
+            ViewBag.MetaDesc = ConstantValues.WebDesignMetaDesc;
+            ViewBag.MetaKeywords = ConstantValues.WebDesignMetaKeywords;
+
             if (postID != null)
             {
                 ViewBag.HideFeature = true;
@@ -91,6 +94,8 @@ namespace griptide.Controllers
             ViewBag.Title = "Griptide - Jquery";
             ViewBag.Category = "WebDesign";
             ViewBag.View = "Jquery";
+            ViewBag.MetaDesc = ConstantValues.JqueryMetaDesc;
+            ViewBag.MetaKeywords = ConstantValues.JqueryMetaKeywords;
 
             return View("Jquery", pageViewModel);
 
@@ -104,6 +109,8 @@ namespace griptide.Controllers
                 ContentEntries = entryRepository.ContentEntry.Where(a => a.EntryTypeID == 4 || a.EntryTypeID == 8 
                     && a.ActiveFlag == 1).OrderByDescending(a => a.EntryID).Take(1)
             };
+            ViewBag.MetaDesc = ConstantValues.WebDesignMetaDesc;
+            ViewBag.MetaKeywords = ConstantValues.WebDesignMetaKeywords;
 
             return View("LatestEntry", pageViewModel);
         }

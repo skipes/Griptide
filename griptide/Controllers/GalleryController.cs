@@ -48,6 +48,8 @@ namespace griptide.Controllers
 
             ViewBag.Title = "Griptide - Gallery";
             ViewBag.Category = "Gallery";
+            ViewBag.MetaDesc = ConstantValues.GalleryMetaDesc;
+            ViewBag.MetaKeywords = ConstantValues.GalleryMetaKeywords;
 
             return View("Gallery", pageViewModel);
         }

@@ -46,6 +46,8 @@ namespace griptide.Controllers
 
             ViewBag.Title = "Griptide - About";
             ViewBag.Category = "About";
+            ViewBag.MetaDesc = ConstantValues.AboutMetaDesc;
+            ViewBag.MetaKeywords = ConstantValues.AboutMetaKeyWords;
 
             return View("About", pageViewModel);
         }
