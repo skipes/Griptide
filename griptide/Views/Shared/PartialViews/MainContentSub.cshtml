@@ -4,7 +4,7 @@
 @if(Model.PostSub != null){
     @Html.Raw(Model.PostSub);   
 }
-@if(Model.LinksGroup.Links.Count() > 0){
+@if(Model.LinksGroup != null && Model.LinksGroup.Links.Any()){
     <span class="sharedULSpan">Relevant Links</span>
     <ul class="sharedUL">
         @foreach(var link in Model.LinksGroup.Links){

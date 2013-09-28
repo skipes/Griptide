@@ -1,0 +1,38 @@
+﻿<style type="text/css">
+    .colorBox{
+        background-color: rgb(150,150,150);
+        border: 1pt solid black;
+        height: 100px;
+        width: 100px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .colorBoxContainer span{
+        color: #CCC;
+    }
+</style>
+<script type="text/javascript" src="@Url.Content("~/Content/scripts/WebDesign/Jquery/ColorBox.js")"></script>
+
+
+    
+<div class="mainContentHeader__Default">
+    <div class="headerDesc floatRight">
+        <span class="headerDesc__Title">Box Color Slider</span>
+        <ul class="headerDesc__featurePoints">
+            <li>Randomly Generated Colors near current color</li>
+            <li>Real-Time color visual</li>
+            <li>Display the RGB color values</li>
+            <li>Random Values change within set range</li>
+        </ul>
+    </div>
+
+    <div class="colorBoxContainer" style="text-align: left; width: 250px;">
+        <div class="colorBox center">
+        </div>
+        <div class="center" style="padding: 10px;">
+            <span>rgb(<span class="redVal">X</span>,<span class="greenVal">X</span>, <span class="blueVal">X</span>)</span>
+            <span class="stopMessage">Stopped!</span>
+        </div>
+    </div>
+</div>

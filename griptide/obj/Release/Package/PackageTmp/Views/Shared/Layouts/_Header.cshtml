@@ -1,4 +1,6 @@
 ﻿<meta name="viewport" content="width=device-width" />
+<meta name="description" content="@ViewBag.MetaDesc" />
+<meta name="keywords" content="@ViewBag.MetaKeywords" />
 <title>@ViewBag.Title</title>
 <link href="@Url.Content("~/Content/css/gtSite.css")" rel="Stylesheet" type="text/css" />
 @{string currController = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();

@@ -24,7 +24,8 @@ namespace griptide.Controllers
         {
             PageEntryViewModel homeViewModel = new PageEntryViewModel
             {
-                ContentEntries = entryRepository.ContentEntry.Where(a => a.EntryTypeID == 1 && a.ActiveFlag == 1)
+                ContentEntries = entryRepository.ContentEntry.Where( a => (a.EntryTypeID == 1 || 
+                    a.ShowOnHomePage == 1) && a.ActiveFlag == 1)
                     .OrderByDescending(a => a.EntryID).Take(10),
                 QuickUpdateEntries = entryRepository.ContentEntry.Where(e => e.ActiveFlag ==1
                     && e.IsQuickUpdate == 1)

@@ -5,3 +5,4 @@ C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\bin\Debu
 C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\bin\Debug\EntityFramework.xml
 C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\obj\Debug\griptide.Domain.dll
 C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\obj\Debug\griptide.Domain.pdb
+C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\obj\Debug\griptide.Domain.csprojResolveAssemblyReference.cache

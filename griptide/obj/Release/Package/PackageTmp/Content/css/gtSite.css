@@ -598,3 +598,8 @@ a.menu_r span {
 .sharedUL li a:hover {
     color: #f8af4b;
 }
+
+.center {
+    margin: 0 auto;
+    text-align: center;
+}

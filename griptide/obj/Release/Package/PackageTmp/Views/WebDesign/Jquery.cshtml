@@ -50,7 +50,7 @@
 }
 
 @section MainContentSub{
-    @if(Model.PostEntry != null && Model.PostEntry.First().LinksGroup != null){
+    @if(Model.PostEntry != null){
         Html.RenderPartial(@Url.Content("~/Views/Shared/PartialViews/MainContentSub.cshtml"), Model.PostEntry.First());
     }
 }

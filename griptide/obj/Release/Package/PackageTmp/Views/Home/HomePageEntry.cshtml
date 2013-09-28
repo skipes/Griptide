@@ -1,6 +1,6 @@
 ﻿@model griptide.Domain.Entities.ContentEntry
 
-<div class="contentEntry">
+<div class="contentEntry" itemscope itemtype="http://schema.org/Article">
     <div class="contentEntryHeader">
         <div>
             <img class="contentEntryImage" src="@Url.Content("~/Content/images/"+ @Model.Image.ImageFile)"/>
@@ -20,21 +20,21 @@
                                 }
                                 
                                 <a href="@Url.Content(urlContent)">
-                                    <span id="contentEntryTitle" class="contentTitle floatLeft generalTextHighlight">@Model.EntryTitle</span>
+                                    <span id="contentEntryTitle" class="contentTitle floatLeft generalTextHighlight" itemprop="name">@Model.EntryTitle</span>
                                 </a>
                             } else {
-                                <span id="contentEntryTitle" class="contentTitle floatLeft generalTextHighlight">@Model.EntryTitle</span>
+                                <span id="contentEntryTitle" class="contentTitle floatLeft generalTextHighlight" itemprop="name">@Model.EntryTitle</span>
                             }
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <span id="contentEntryDate" class="contentDate floatLeft">@Model.DateCreated</span>
+                            <span id="contentEntryDate" class="contentDate floatLeft" itemprop="datePublished">@Model.DateCreated</span>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
     </div>
-    <span id="contentEntryText" class="contentText floatLeft contentHeaderPadLeft">@Html.Raw(Model.EntryText)</span>
+    <span id="contentEntryText" class="contentText floatLeft contentHeaderPadLeft" itemprop="description">@Html.Raw(Model.EntryText)</span>
 </div>

@@ -221,6 +221,7 @@
     <Content Include="Content\scripts\HomePicRotator.js" />
     <Content Include="Content\scripts\jquery-ui-1.10.2.custom.min.js" />
     <Content Include="Content\scripts\PicViewer.js" />
+    <Content Include="Content\scripts\WebDesign\Jquery\ColorBox.js" />
     <Content Include="Content\scripts\WebDesign\Jquery\Juggler.js" />
     <Content Include="Content\scripts\WebDesign\Jquery\Timer.js" />
     <Content Include="Content\scripts\WebDesign\WebDesignShowcase.js" />
@@ -352,6 +353,7 @@
     <Content Include="Views\Shared\Layouts\_Footer.cshtml" />
     <Content Include="Views\Shared\PartialViews\MainContentSub.cshtml" />
     <Content Include="Views\WebDesign\Jquery\Juggler.cshtml" />
+    <Content Include="Views\WebDesign\Jquery\ColorBox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -75,7 +75,7 @@ namespace griptide.Controllers
                 pageViewModel = new PageEntryViewModel
                 {
                     ContentEntries = entryRepository.ContentEntry.Where(a => a.EntryTypeID == 8 && a.ActiveFlag == 1)
-                    .OrderByDescending(a => a.EntryTypeID).Take(5),
+                    .OrderByDescending(a => a.EntryID).Take(5),
                     //MenuItems = menuRepository.MenuItem.Where(e => e.EnabledFlag == 1).OrderByDescending(e => e.DisplayOrder)
                 };
             }

@@ -23,6 +23,7 @@ namespace griptide.Domain.Entities
         public string Controller { get; set; }
         public string Action { get; set; }
         public int IsQuickUpdate { get; set; }
+        public int ShowOnHomePage { get; set; }
 
         [ForeignKey("ImageID")]
         public virtual Image Image { get; set; }
