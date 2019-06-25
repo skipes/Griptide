@@ -6,3 +6,15 @@ C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\bin\Debu
 C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\obj\Debug\griptide.Domain.dll
 C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\obj\Debug\griptide.Domain.pdb
 C:\Users\Sean\Documents\Visual Studio 2010\Projects\MVC\griptide\Domain\obj\Debug\griptide.Domain.csprojResolveAssemblyReference.cache
+C:\1_Development\Development\collaborate\Griptide\Domain\bin\Debug\griptide.Domain.dll.config
+C:\1_Development\Development\collaborate\Griptide\Domain\bin\Debug\griptide.Domain.dll
+C:\1_Development\Development\collaborate\Griptide\Domain\bin\Debug\griptide.Domain.pdb
+C:\1_Development\Development\collaborate\Griptide\Domain\bin\Debug\EntityFramework.dll
+C:\1_Development\Development\collaborate\Griptide\Domain\bin\Debug\MySql.Data.dll
+C:\1_Development\Development\collaborate\Griptide\Domain\bin\Debug\MySql.Data.Entity.dll
+C:\1_Development\Development\collaborate\Griptide\Domain\bin\Debug\Ninject.dll
+C:\1_Development\Development\collaborate\Griptide\Domain\bin\Debug\Ninject.pdb
+C:\1_Development\Development\collaborate\Griptide\Domain\obj\Debug\griptide.Domain.csproj.CoreCompileInputs.cache
+C:\1_Development\Development\collaborate\Griptide\Domain\obj\Debug\griptide.Domain.csproj.CopyComplete
+C:\1_Development\Development\collaborate\Griptide\Domain\obj\Debug\griptide.Domain.dll
+C:\1_Development\Development\collaborate\Griptide\Domain\obj\Debug\griptide.Domain.pdb
